@@ -2,3 +2,6 @@
 **/dist/
 **/*.d.ts
 **/.pulumi/
+**/.webiny/
+**/.yarn/
+**

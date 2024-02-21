@@ -1,12 +1,14 @@
 import React from "react";
 import { Admin } from "@webiny/app-serverless-cms";
-import { Cognito } from "@webiny/app-admin-users-cognito";
+import { Okta } from "@webiny/app-admin-okta";
 import "./App.scss";
 
+import { oktaFactory, rootAppClientId } from "./okta";
+
 export const App = () => {
-    return (
-        <Admin>
-            <Cognito />
-        </Admin>
-    );
+return (
+  <Admin>
+    <Okta factory={oktaFactory} rootAppClientId={rootAppClientId} />
+  </Admin>
+);
 };

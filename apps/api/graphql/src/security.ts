@@ -1,4 +1,4 @@
-import { DynamoDBClient } from "@webiny/aws-sdk/client-dynamodb";
+import { DocumentClient } from "aws-sdk/clients/dynamodb";
 import { createTenancyContext, createTenancyGraphQL } from "@webiny/api-tenancy";
 import { createStorageOperations as tenancyStorageOperations } from "@webiny/api-tenancy-so-ddb";
 import { createSecurityContext, createSecurityGraphQL } from "@webiny/api-security";
@@ -6,13 +6,12 @@ import { createStorageOperations as securityStorageOperations } from "@webiny/ap
 import { authenticateUsingHttpHeader } from "@webiny/api-security/plugins/authenticateUsingHttpHeader";
 import apiKeyAuthentication from "@webiny/api-security/plugins/apiKeyAuthentication";
 import apiKeyAuthorization from "@webiny/api-security/plugins/apiKeyAuthorization";
-import tenantLinkAuthorization from "@webiny/api-security/plugins/tenantLinkAuthorization";
-import cognitoAuthentication, { syncWithCognito } from "@webiny/api-security-cognito";
 import anonymousAuthorization from "@webiny/api-security/plugins/anonymousAuthorization";
+import { createOkta } from "@webiny/api-security-okta";
 import createAdminUsersApp from "@webiny/api-admin-users";
 import { createStorageOperations as createAdminUsersStorageOperations } from "@webiny/api-admin-users-so-ddb";
 
-export default ({ documentClient }: { documentClient: DynamoDBClient }) => [
+export default ({ documentClient }: { documentClient: DocumentClient }) => [
     /**
      * Create Tenancy app in the `context`.
      */
@@ -29,13 +28,25 @@ export default ({ documentClient }: { documentClient: DynamoDBClient }) => [
      * Create Security app in the `context`.
      */
     createSecurityContext({
+        /**
+         * For Okta, this must be set to `false`, as we don't have links in the database.
+         */
+        verifyIdentityToTenantLink: false,
         storageOperations: securityStorageOperations({ documentClient })
     }),
 
     /**
      * Expose security GraphQL schema.
      */
-    createSecurityGraphQL(),
+    createSecurityGraphQL({
+        /**
+         * For Okta, we must provide custom logic to determine the "default" tenant for current identity.
+         * Since we're not linking identities to tenants via DB records, we can just return the current tenant.
+         */
+        async getDefaultTenant(context) {
+            return context.tenancy.getCurrentTenant();
+        }
+    }),
 
     /**
      * Create Admin Users app.
@@ -45,18 +56,37 @@ export default ({ documentClient }: { documentClient: DynamoDBClient }) => [
     }),
 
     /**
-     * Sync Admin Users with Cognito User Pool.
-     */
-    syncWithCognito({
-        region: String(process.env.COGNITO_REGION),
-        userPoolId: String(process.env.COGNITO_USER_POOL_ID)
-    }),
-
-    /**
      * Perform authentication using the common "Authorization" HTTP header.
      * This will fetch the value of the header, and execute the authentication process.
      */
     authenticateUsingHttpHeader(),
+
+    /**
+     * Configure Okta authentication and authorization.
+     */
+    createOkta({
+        /**
+         * `issuer` is required for token verification.
+         */
+        issuer: process.env.OKTA_ISSUER as string,
+        /**
+         * Construct the identity object and map token claims to arbitrary identity properties.
+         */
+        getIdentity({ token }) {
+            return {
+                id: token["sub"],
+                type: "admin",
+                displayName: token["name"],
+                group: token["webiny_group"]
+            };
+        },
+        /**
+         * Get the slug of a security role to fetch permissions from.
+         */
+        getGroupSlug(context) {
+            return context.security.getIdentity()["group"];
+        }
+    }),
 
     /**
      * API Key authenticator.
@@ -67,30 +97,10 @@ export default ({ documentClient }: { documentClient: DynamoDBClient }) => [
     apiKeyAuthentication({ identityType: "api-key" }),
 
     /**
-     * Cognito authentication plugin.
-     * This plugin will verify the JWT token against the provided User Pool.
-     */
-    cognitoAuthentication({
-        region: String(process.env.COGNITO_REGION),
-        userPoolId: String(process.env.COGNITO_USER_POOL_ID),
-        identityType: "admin"
-    }),
-
-    /**
      * Authorization plugin to fetch permissions for a verified API key.
      * The "identityType" must match the authentication plugin used to load the identity.
      */
     apiKeyAuthorization({ identityType: "api-key" }),
-
-    /**
-     * Authorization plugin to fetch permissions from a security role or team associated with the identity.
-     */
-    tenantLinkAuthorization({ identityType: "admin" }),
-
-    /**
-     * Authorization plugin to fetch permissions from the parent tenant.
-     */
-    tenantLinkAuthorization({ identityType: "admin", parent: true }),
 
     /**
      * Authorization plugin to load permissions for anonymous requests.

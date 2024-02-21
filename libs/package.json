@@ -1,0 +1,8 @@
+{
+    "name": "awsconfig",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@webiny/pulumi-aws": "5.39.1"
+    }
+}

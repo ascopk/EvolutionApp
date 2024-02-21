@@ -13,7 +13,8 @@
 		"@webiny/cli-plugin-workspaces": "5.39.1",
 		"@webiny/cwp-template-aws": "5.39.1",
 		"@webiny/project-utils": "5.39.1",
-		"@webiny/serverless-cms-aws": "5.39.1"
+		"@webiny/serverless-cms-aws": "5.39.1",
+		"awsconfig": "file:libs/"
 	},
 	"keywords": [
 		"aws+dynamodb+elasticsearch"
@@ -60,7 +61,8 @@
 			"apps/theme",
 			"apps/api/graphql",
 			"apps/api/headlessCMS",
-			"packages/*"
+			"packages/*",
+			"libs/*"
 		]
 	},
 	"scripts": {
