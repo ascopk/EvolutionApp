@@ -14,7 +14,7 @@
 		"@webiny/cwp-template-aws": "5.39.1",
 		"@webiny/project-utils": "5.39.1",
 		"@webiny/serverless-cms-aws": "5.39.1",
-		"awsconfig": "file:libs/"
+		"awsconfig": "file:libs/awsconfig"
 	},
 	"keywords": [
 		"aws+dynamodb+elasticsearch"

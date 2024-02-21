@@ -6,7 +6,7 @@ Resources:
   Role:
     Type: AWS::IAM::Role
     Properties:
-      MaxSessionDuration: "7200"
+      MaxSessionDuration: "21600"
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
         Statement:

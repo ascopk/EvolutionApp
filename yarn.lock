@@ -12798,7 +12798,7 @@ __metadata:
     "@webiny/cwp-template-aws": 5.39.1
     "@webiny/project-utils": 5.39.1
     "@webiny/serverless-cms-aws": 5.39.1
-    awsconfig: "file:libs/"
+    awsconfig: "file:libs/awsconfig"
     babel-plugin-dynamic-import-node: 2.3.3
     babel-plugin-module-resolver: 4.1.0
     chalk: 4.1.2
@@ -13004,14 +13004,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"awsconfig@file:libs/::locator=asco.webiny%40workspace%3A.":
+"awsconfig@file:libs/awsconfig::locator=asco.webiny%40workspace%3A.":
   version: 0.1.0
-  resolution: "awsconfig@file:libs/#libs/::hash=5df9ea&locator=asco.webiny%40workspace%3A."
+  resolution: "awsconfig@file:libs/awsconfig#libs/awsconfig::hash=5df9ea&locator=asco.webiny%40workspace%3A."
   dependencies:
     "@webiny/pulumi-aws": 5.39.1
   checksum: 0ec268d5a4952b076d34a97030a01245ef37b6c48774e959039c890b4527afb21b3fa504d598891b2a015489f1b835b198a7a3000842b4c9e051a39d9f86d4a3
   languageName: node
   linkType: hard
+
+"awsconfig@workspace:libs/awsconfig":
+  version: 0.0.0-use.local
+  resolution: "awsconfig@workspace:libs/awsconfig"
+  dependencies:
+    "@webiny/pulumi-aws": 5.39.1
+  languageName: unknown
+  linkType: soft
 
 "axios@npm:0.21.4":
   version: 0.21.4
