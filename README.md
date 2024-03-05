@@ -18,6 +18,19 @@ deployment **must** occur in the order stated above: `yarn webiny deploy apps/co
 ensure that the proper webiny credentials are set in `~/.aws/credentials`  
 IAC state is stored in AWS s3. It has to be set as env variable: `WEBINY_PULUMI_BACKEND=s3://wby-sandbox-state`  
 
+## webiny local development
+
+As stated in the [documentation](https://www.webiny.com/docs/core-development-concepts/development/local-development), since Webiny is a serverless platform the backend still must be deployed in the cloud and there is little that can be done locally.
+
+You can deploy a personal webiny environment in your developer AWS account sandbox by using the following steps:
+
+1. In your AWS account (the one with your first and last name), go to `IAM` and select `Roles` from the left menu
+2. Search for the role named "webiny-oidc-role" (there will be a random hash at the end of the role name)
+3. Copy the ARN of that role
+4. Use the [Personal Environment](https://github.com/ascogit/ASCO.webiny/actions/workflows/personal.yml) github actions workflow
+5. Insert the role ARN as the `AWS_OIDC_ROLE` parameter and run the workflow
+6. When completed, the workflow summary page will show the urls for your own personal Webiny environment
+
 ## cli examples
 
 * list resources: `yarn webiny pulumi apps/core --env dev -- stack --show-ids`

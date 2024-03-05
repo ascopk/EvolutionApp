@@ -1,0 +1,96 @@
+name: Personal Environment
+
+on:
+  workflow_dispatch:
+    inputs:
+      AWS_OIDC_ROLE:
+        description: 'AWS oidc role for webiny IAM user'
+        required: true
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  Deploy:
+    name: Deploy Personal Environment
+    runs-on: ubuntu-latest
+    environment: sandbox
+    env:
+      AWS_REGION: ${{ vars.AWS_REGION }}
+      PULUMI_SECRETS_PROVIDER: ${{ secrets.PULUMI_SECRETS_PROVIDER }}
+      PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
+      WEBINY_PULUMI_BACKEND: ${{ secrets.WEBINY_PULUMI_BACKEND }}
+      WCP_PROJECT_ENVIRONMENT_API_KEY: ${{ secrets.WCP_API_KEY }}
+      OKTA_ISSUER: ${{ vars.OKTA_ISSUER }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'yarn'
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: us-east-1
+          role-to-assume: ${{ inputs.AWS_OIDC_ROLE }}
+          role-session-name: AscoWebinyPersonal_${{ github.actor }}
+      - name: Install dependencies
+        run: yarn --immutable
+      - name: Build webiny packages
+        run: yarn webiny build core,api,admin,website --env=${{ github.actor }}
+      - name: Deploy webiny
+        run: yarn webiny deploy --env=${{ github.actor }}
+      - name: Set Webiny Variables
+        run: |
+          echo '## Webiny Instance Info' >> $GITHUB_STEP_SUMMARY
+          yarn webiny info --env=${{ github.actor }} >> $GITHUB_STEP_SUMMARY
+          echo "WEBINY_API_URL=$(yarn webiny output api --env=${{ github.actor }} --json | jq -r '.apiUrl')" >> $GITHUB_ENV
+          echo "WEBINY_ADMIN_URL=$(yarn webiny output admin --env=${{ github.actor }} --json | jq -r '.appUrl')" >> $GITHUB_ENV
+      - name: Okta add trusted origins
+        run: |
+          echo '## Okta Trusted Origins' >> $GITHUB_STEP_SUMMARY
+          for app in admin api; do
+            export origin_url=$(eval "echo \$WEBINY_${app^^}_URL")
+            payload=$(jq -n \
+              --arg name "webiny personal ${{ github.actor }} $app" \
+              --arg origin "${origin_url}" \
+              '{ "name": $name, "origin": $origin, "scopes": [{"type": "CORS"}, {"type": "REDIRECT"}] }')
+           
+            response=$(curl -X POST -s \
+              -H "Accept: application/json" \
+              -H "Content-Type: application/json" \
+              -H "Authorization: SSWS ${{ secrets.OKTA_API_TOKEN }}" \
+              -d "${payload}" \
+              "https://myasco.okta.com/api/v1/trustedOrigins")
+            
+            echo "$app Okta trusted origin:  " >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            echo "${response}" | jq . >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+          done
+      - name: Okta modify redirects
+        run: |
+          echo '## Okta Application Redirects'
+          okta_app_object=$(curl -s -f -X GET \
+            -H "Accept: application/json" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: SSWS ${{ secrets.OKTA_API_TOKEN }}" \
+            "https://myasco.okta.com/api/v1/apps/${{ vars.OKTA_WEBINY_APP_ID }}")
+          
+          new_origins=$(echo ${okta_app_object} | jq \
+            --arg admin_url "$WEBINY_ADMIN_URL" \
+            --arg api_url "$WEBINY_API_URL" \
+            '(.settings.oauthClient.redirect_uris, .settings.oauthClient.post_logout_redirect_uris) += [$admin_url, $api_url]')
+
+          response=$(curl -s -X PUT \
+            -H "Accept: application/json" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: SSWS ${{ secrets.OKTA_API_TOKEN }}" \
+            -d "${new_origins}" \
+            "https://myasco.okta.com/api/v1/apps/${{ vars.OKTA_WEBINY_APP_ID }}")
+          
+          echo "Okta redirects: " >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "${response}" | jq . >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
