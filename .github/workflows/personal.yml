@@ -1,4 +1,5 @@
 name: Personal Environment
+run-name: ${{ github.actor }} webiny deployment
 
 on:
   workflow_dispatch:
@@ -37,8 +38,6 @@ jobs:
           role-session-name: AscoWebinyPersonal_${{ github.actor }}
       - name: Install dependencies
         run: yarn --immutable
-      - name: Build webiny packages
-        run: yarn webiny build core,api,admin,website --env=${{ github.actor }}
       - name: Deploy webiny
         run: yarn webiny deploy --env=${{ github.actor }}
       - name: Set Webiny Variables
@@ -66,7 +65,7 @@ jobs:
             
             echo "$app Okta trusted origin:  " >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
-            echo "${response}" | jq . >> $GITHUB_STEP_SUMMARY
+            echo "${response}" | jq '.origin // .errorCauses' >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
           done
       - name: Okta modify redirects
@@ -92,5 +91,5 @@ jobs:
           
           echo "Okta redirects: " >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
-          echo "${response}" | jq . >> $GITHUB_STEP_SUMMARY
+          echo "${response}" | jq '.settings.oauthClient // .errorCauses' >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY

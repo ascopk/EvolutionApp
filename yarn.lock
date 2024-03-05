@@ -13006,10 +13006,10 @@ __metadata:
 
 "awsconfig@file:libs/awsconfig::locator=asco.webiny%40workspace%3A.":
   version: 0.1.0
-  resolution: "awsconfig@file:libs/awsconfig#libs/awsconfig::hash=5df9ea&locator=asco.webiny%40workspace%3A."
+  resolution: "awsconfig@file:libs/awsconfig#libs/awsconfig::hash=007745&locator=asco.webiny%40workspace%3A."
   dependencies:
     "@webiny/pulumi-aws": 5.39.1
-  checksum: 0ec268d5a4952b076d34a97030a01245ef37b6c48774e959039c890b4527afb21b3fa504d598891b2a015489f1b835b198a7a3000842b4c9e051a39d9f86d4a3
+  checksum: e1503033e7a53f05e17deafe3bd51594820b36a54ee381cde0b849835fc892ed6d78b816b160e0a22355f65f6a64ad1411a0d9372bd31479ab638879ac7d44c4
   languageName: node
   linkType: hard
 
