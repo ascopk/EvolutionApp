@@ -7,21 +7,20 @@ export default createWebsiteApp({
 
     vpc: ({ params }) => {
         const { env } = params.run
-        let awsEnv = env 
-        if (!ascoEnvs.includes(env)){ awsEnv = "sandbox" }
-        return { 
-             useExistingVpc: {
-                 lambdaFunctionsVpcConfig: {
-                     subnetIds: awsconfig[awsEnv].subnets,
-                     securityGroupIds: awsconfig[awsEnv].securitygroups
-                 }
-             }
-         }
+        if (ascoEnvs.includes(env)){
+            return { 
+                useExistingVpc: {
+                    lambdaFunctionsVpcConfig: {
+                        subnetIds: awsconfig[env].subnets,
+                        securityGroupIds: awsconfig[env].securitygroups
+                    }
+                }
+            }
+        }
     },
 
     pulumi({ resources, params }) {
         const { env } = params.run
-        let awsEnv = env
         const deployables = [
             {name: "preview", deploy: resources.preview}, 
             {name: "delivery", deploy: resources.delivery}
@@ -29,30 +28,25 @@ export default createWebsiteApp({
 
         deployables.forEach((each) => {
             each.deploy.cloudfront.config.comment(`${env} webiny ${each.name}`)
-            switch(each.name){
-                case "preview":
-                    // each.deploy.cloudfront.config.aliases([`webiny-preview.${env}.asco.org`])
-                    each.deploy.cloudfront.config.aliases([`${env}-webiny-preview.asco.org`])
-                    break;
-                case "delivery":
-                    // each.deploy.cloudfront.config.aliases([`webiny.${env}.asco.org`])
-                    each.deploy.cloudfront.config.aliases([`${env}-webiny.asco.org`])
-            }
 
-            if (!ascoEnvs.includes(env)){
-                each.deploy.cloudfront.config.aliases([])
-                awsEnv = "sandbox"
-            }
-
-            each.deploy.cloudfront.config.webAclId(awsconfig[awsEnv].waf)
-            each.deploy.cloudfront.config.viewerCertificate(config => {
-                return { ...config, 
-                    acmCertificateArn: awsconfig[awsEnv].cert,
-                    minimumProtocolVersion: awsconfig[awsEnv].tls,
-                    sslSupportMethod: "sni-only" 
+            if (ascoEnvs.includes(env)){
+                switch(each.name){
+                    case "preview":
+                        each.deploy.cloudfront.config.aliases([`${env}-webiny-preview.asco.org`])
+                        break;
+                    case "delivery":
+                        each.deploy.cloudfront.config.aliases([`${env}-webiny.asco.org`])
+                        break;
                 }
-            })
+                each.deploy.cloudfront.config.webAclId(awsconfig[env].waf)
+                each.deploy.cloudfront.config.viewerCertificate(config => {
+                    return { ...config, 
+                        acmCertificateArn: awsconfig[env].cert,
+                        minimumProtocolVersion: awsconfig[env].tls,
+                        sslSupportMethod: "sni-only"
+                    }
+                })
+            }
       })
-
     }
 });

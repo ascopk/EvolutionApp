@@ -9,22 +9,18 @@ export default createAdminApp({
         const { cloudfront } = resources;
         const { env } = params.run
 
-        let awsEnv = env 
         cloudfront.config.comment(`${env} webiny admin`)
-        // cloudfront.config.aliases([`webiny-admin.${env}.asco.org`])
-        cloudfront.config.aliases([`${env}-webiny-admin.asco.org`])
-        if (!ascoEnvs.includes(env)){
-            cloudfront.config.aliases([])
-            awsEnv = "sandbox"
-        }
 
-        cloudfront.config.webAclId(awsconfig[awsEnv].waf)
-        cloudfront.config.viewerCertificate(config => {
-            return { ...config, 
-                acmCertificateArn: awsconfig[awsEnv].cert,
-                minimumProtocolVersion: awsconfig[awsEnv].tls,
-                sslSupportMethod: "sni-only" 
-            }
-        })
+        if (ascoEnvs.includes(env)){
+            cloudfront.config.aliases([`${env}-webiny-admin.asco.org`])
+            cloudfront.config.webAclId(awsconfig[env].waf)
+            cloudfront.config.viewerCertificate(config => {
+                return { ...config, 
+                    acmCertificateArn: awsconfig[env].cert,
+                    minimumProtocolVersion: awsconfig[env].tls,
+                    sslSupportMethod: "sni-only" 
+                }
+            })
+        }
     }
-})
+});

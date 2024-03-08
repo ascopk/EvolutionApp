@@ -493,3 +493,15 @@ Resources:
                   - ec2:DisableVpcClassicLinkDnsSupport
                   - ec2:EnableVpcClassicLink
                   - ec2:EnableVpcClassicLinkDnsSupport
+
+              - Effect: Allow
+                Resource: arn:aws:states:*:*:stateMachine:wby-*
+                Action:
+                  - states:CreateStateMachine
+                  - states:DeleteStateMachine
+                  - states:DescribeStateMachine
+                  - states:ListTagsForResource
+                  - states:TagResource
+                  - states:UntagResource
+                  - states:ListStateMachines
+                  - states:UpdateStateMachine

@@ -8,17 +8,18 @@ export default createCoreApp({
     
     vpc: ({ params }) => {
         const { env } = params.run
-        let awsEnv = env 
-        if (!ascoEnvs.includes(env)){ awsEnv = "sandbox" }
-        return { 
-            useExistingVpc: {
-                elasticSearchDomainVpcConfig: {
-                    subnetIds: awsconfig[awsEnv].subnets,
-                    securityGroupIds: awsconfig[awsEnv].securitygroups
-                },
-                lambdaFunctionsVpcConfig: {
-                    subnetIds: awsconfig[awsEnv].subnets,
-                    securityGroupIds: awsconfig[awsEnv].securitygroups
+
+        if (ascoEnvs.includes(env)){
+            return { 
+                useExistingVpc: {
+                    elasticSearchDomainVpcConfig: {
+                        subnetIds: awsconfig[env].subnets,
+                        securityGroupIds: awsconfig[env].securitygroups
+                    },
+                    lambdaFunctionsVpcConfig: {
+                        subnetIds: awsconfig[env].subnets,
+                        securityGroupIds: awsconfig[env].securitygroups
+                    }
                 }
             }
         }
