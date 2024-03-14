@@ -10057,17 +10057,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@webiny/api@npm:5.39.2":
-  version: 5.39.2
-  resolution: "@webiny/api@npm:5.39.2"
-  dependencies:
-    "@babel/runtime": 7.22.6
-    "@webiny/aws-sdk": 5.39.2
-    "@webiny/plugins": 5.39.2
-  checksum: f10240653d761457e16990009a792faab6e0afa71be1f14c9edf590c06194a8fce25b9763126f9be15dbb90b0dcc646d72136835a9306327da4c162311cecec5
-  languageName: node
-  linkType: hard
-
 "@webiny/api@npm:5.39.3":
   version: 5.39.3
   resolution: "@webiny/api@npm:5.39.3"
@@ -11032,34 +11021,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@webiny/aws-sdk@npm:5.39.2":
-  version: 5.39.2
-  resolution: "@webiny/aws-sdk@npm:5.39.2"
-  dependencies:
-    "@aws-sdk/client-cloudfront": 3.425.0
-    "@aws-sdk/client-cloudwatch-events": 3.425.0
-    "@aws-sdk/client-cloudwatch-logs": 3.425.0
-    "@aws-sdk/client-cognito-identity-provider": 3.425.0
-    "@aws-sdk/client-dynamodb": 3.425.0
-    "@aws-sdk/client-dynamodb-streams": 3.425.0
-    "@aws-sdk/client-eventbridge": 3.425.0
-    "@aws-sdk/client-iam": 3.425.0
-    "@aws-sdk/client-lambda": 3.425.0
-    "@aws-sdk/client-s3": 3.425.0
-    "@aws-sdk/client-sfn": 3.484.0
-    "@aws-sdk/client-sqs": 3.425.0
-    "@aws-sdk/client-sts": 3.425.0
-    "@aws-sdk/credential-providers": 3.425.0
-    "@aws-sdk/lib-dynamodb": 3.425.0
-    "@aws-sdk/lib-storage": 3.451.0
-    "@aws-sdk/s3-presigned-post": 3.425.0
-    "@aws-sdk/s3-request-presigner": 3.425.0
-    "@aws-sdk/util-dynamodb": 3.425.0
-    "@webiny/utils": 5.39.2
-  checksum: 1aaf9e5e4ed9de3c8ea1cc90d75606bd710b5871c524ef91d8e7265a72097936a5dffd9c5a98bd899f33ee0ee3d2752b4630725820b517ea435b72e18c5a7333
-  languageName: node
-  linkType: hard
-
 "@webiny/aws-sdk@npm:5.39.3":
   version: 5.39.3
   resolution: "@webiny/aws-sdk@npm:5.39.3"
@@ -11085,39 +11046,6 @@ __metadata:
     "@aws-sdk/util-dynamodb": 3.425.0
     "@webiny/utils": 5.39.3
   checksum: 0ca6bdf50ece4b4597058f853eaec0fb18cd6a127265e6cd84fe6e096a59fd16094b00d480d481974ab0c2e05aa6f68e162156b3309335862eef07137ad65c86
-  languageName: node
-  linkType: hard
-
-"@webiny/cli-plugin-deploy-pulumi@npm:5.39.2":
-  version: 5.39.2
-  resolution: "@webiny/cli-plugin-deploy-pulumi@npm:5.39.2"
-  dependencies:
-    "@webiny/aws-sdk": 5.39.2
-    "@webiny/cli": 5.39.2
-    "@webiny/data-migration": 5.39.2
-    "@webiny/pulumi-sdk": 5.39.2
-    ansi-to-html: 0.6.15
-    blessed: 0.1.81
-    blessed-contrib: 4.10.1
-    body-parser: 1.19.0
-    chalk: 4.1.2
-    execa: 5.1.1
-    express: 4.17.1
-    fast-glob: 3.2.12
-    handlebars: 4.7.7
-    localtunnel: 2.0.2
-    lodash: 4.17.21
-    log-update: 4.0.0
-    mime: 2.6.0
-    minimatch: 5.1.6
-    ncp: 2.0.0
-    node-notifier: 7.0.2
-    open: 8.4.0
-    ora: 4.1.1
-    replace-in-path: 1.1.0
-    strip-ansi: 6.0.1
-    ws: 7.5.5
-  checksum: 2f42b78c374f6bb7f5daa20bf0587583579b985f4782f99fa3fffd1bf119afd6b7f2310f9d4142ca8dcabad8c90f8ed907bcebd11bb8e7befa3305bfd6249937
   languageName: node
   linkType: hard
 
@@ -11242,36 +11170,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@webiny/cli@npm:5.39.2":
-  version: 5.39.2
-  resolution: "@webiny/cli@npm:5.39.2"
-  dependencies:
-    "@webiny/telemetry": 5.39.2
-    "@webiny/wcp": 5.39.2
-    boolean: 3.2.0
-    camelcase: 5.3.1
-    chalk: 4.1.2
-    dotenv: 8.6.0
-    execa: 5.1.1
-    fast-glob: 3.2.12
-    find-up: 5.0.0
-    fs-extra: 9.1.0
-    graphql-request: 3.7.0
-    inquirer: 7.3.3
-    ncp: 2.0.0
-    open: 8.4.0
-    pirates: 4.0.5
-    semver: 7.5.4
-    ts-morph: 11.0.3
-    typescript: 4.7.4
-    uniqid: 5.4.0
-    yargs: 17.6.2
-  bin:
-    webiny: bin.js
-  checksum: 85284835a15cab02597cd08acc972facf1a59652cbbc41848258c34ec9d5ea6c78ccb663641b56fe23c351c2709fe3a27b2efae88aa3f46bed6cc9589dc6f2c8
-  languageName: node
-  linkType: hard
-
 "@webiny/cli@npm:5.39.3":
   version: 5.39.3
   resolution: "@webiny/cli@npm:5.39.3"
@@ -11323,28 +11221,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@webiny/data-migration@npm:5.39.2":
-  version: 5.39.2
-  resolution: "@webiny/data-migration@npm:5.39.2"
-  dependencies:
-    "@babel/runtime": 7.22.6
-    "@elastic/elasticsearch": 7.12.0
-    "@types/pino": 7.0.5
-    "@webiny/aws-sdk": 5.39.2
-    "@webiny/db-dynamodb": 5.39.2
-    "@webiny/handler-aws": 5.39.2
-    "@webiny/ioc": 5.39.2
-    "@webiny/logger": 5.39.2
-    "@webiny/utils": 5.39.2
-    center-align: 1.0.1
-    chalk: 4.1.2
-    minimatch: 5.1.6
-    pino-pretty: 9.4.0
-    semver: 7.5.4
-  checksum: 3110daf5e23c0a408a3f0dc89983a35088aedb859992cfcb5f880e2ccb71a2d47dbfba3c9a08cce981193ff9a59221cf40bde5a36c24fb34210a4f0ffcc2618e
-  languageName: node
-  linkType: hard
-
 "@webiny/data-migration@npm:5.39.3":
   version: 5.39.3
   resolution: "@webiny/data-migration@npm:5.39.3"
@@ -11364,26 +11240,6 @@ __metadata:
     pino-pretty: 9.4.0
     semver: 7.5.4
   checksum: a035d420a9ecc201fa29105222a56eca81eb8b0963359b2bc4c4f5aee607ef4434f4075de38d3c1d858c4e467a4d1d7eafa3feeda1e90f0b2dd5372e220e2504
-  languageName: node
-  linkType: hard
-
-"@webiny/db-dynamodb@npm:5.39.2":
-  version: 5.39.2
-  resolution: "@webiny/db-dynamodb@npm:5.39.2"
-  dependencies:
-    "@webiny/api": 5.39.2
-    "@webiny/aws-sdk": 5.39.2
-    "@webiny/db": 5.39.2
-    "@webiny/error": 5.39.2
-    "@webiny/handler-db": 5.39.2
-    "@webiny/plugins": 5.39.2
-    date-fns: 2.29.3
-    dot-prop: 6.0.1
-    dynamodb-toolbox: 0.9.2
-    fuse.js: 7.0.0
-    is-number: 7.0.0
-    lodash: 4.17.21
-  checksum: c98a11620f0089d45609d671ed4c9f99a39ad8e802b20f2a2f8b2c5b58792b4e8707e62b3606dc0ae8af5e466c5fb80e4ee0948e256e7511a13933d277edaec7
   languageName: node
   linkType: hard
 
@@ -11407,24 +11263,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@webiny/db@npm:5.39.2":
-  version: 5.39.2
-  resolution: "@webiny/db@npm:5.39.2"
-  checksum: fec78cc17998064bfb656f82921c0e3faff4e835b4c612f0de6905df48f7178757403e97287e1cb6ca0b4407a1435061aeb57ee747a1c1ccc1d5dea3f857527e
-  languageName: node
-  linkType: hard
-
 "@webiny/db@npm:5.39.3":
   version: 5.39.3
   resolution: "@webiny/db@npm:5.39.3"
   checksum: c56ac1b95860168b91f8cd1f920a1fb677409b3623a50d8637c8da246bf4b150e3bec3320e115a752ec19b906952556d83e9d303f6a660a5782662a122b4361e
-  languageName: node
-  linkType: hard
-
-"@webiny/error@npm:5.39.2":
-  version: 5.39.2
-  resolution: "@webiny/error@npm:5.39.2"
-  checksum: f4b5782f796802e9965e2582d78289ae4c195db68aa1cf199414240d5bc03655dc36be2d33ce57a61d499c1990972ff39e6bc7ef6b152f30e09306d23e1a945d
   languageName: node
   linkType: hard
 
@@ -11457,17 +11299,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@webiny/global-config@npm:5.39.2":
-  version: 5.39.2
-  resolution: "@webiny/global-config@npm:5.39.2"
-  dependencies:
-    load-json-file: 6.2.0
-    uuid: 8.3.2
-    write-json-file: 4.3.0
-  checksum: 17665f2a95ad7de62a2f1840a5f6e6f3ffb4342c4519164794f5b5da617fa344eed5fc15da4473aab9ef5dabc1805c646c845717e4a8415ec99102ec54f5e9da
-  languageName: node
-  linkType: hard
-
 "@webiny/global-config@npm:5.39.3":
   version: 5.39.3
   resolution: "@webiny/global-config@npm:5.39.3"
@@ -11476,22 +11307,6 @@ __metadata:
     uuid: 8.3.2
     write-json-file: 4.3.0
   checksum: 626e606d56d4e852c82ea19a78edf71e2792306b41dc8f48c1e32e21ae274a5ab62d68b052ca7b2f650f361f1d3f40992fb67d89707023af2050d5351a62d93c
-  languageName: node
-  linkType: hard
-
-"@webiny/handler-aws@npm:5.39.2":
-  version: 5.39.2
-  resolution: "@webiny/handler-aws@npm:5.39.2"
-  dependencies:
-    "@babel/runtime": 7.22.6
-    "@fastify/aws-lambda": 3.1.3
-    "@webiny/aws-sdk": 5.39.2
-    "@webiny/handler": 5.39.2
-    "@webiny/handler-client": 5.39.2
-    "@webiny/plugins": 5.39.2
-    "@webiny/utils": 5.39.2
-    fastify: 4.11.0
-  checksum: ca1c5844b6633d8519313cce35e84d0c23fc24de6562d14118135ce8051b8196c39e41eeb503983e8c3fc91e9d5f57c64f5b9fd1205c2c5f21e28c198746ccdc
   languageName: node
   linkType: hard
 
@@ -11511,18 +11326,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@webiny/handler-client@npm:5.39.2":
-  version: 5.39.2
-  resolution: "@webiny/handler-client@npm:5.39.2"
-  dependencies:
-    "@babel/runtime": 7.22.6
-    "@webiny/api": 5.39.2
-    "@webiny/error": 5.39.2
-    "@webiny/plugins": 5.39.2
-  checksum: 6ce3c27017c30acf184638a3f6da8106275fb76262045595185e3db38b9bd1ac085b31316b3da58027980301f986ed60d8fd3a374de564b58dfdd45493128792
-  languageName: node
-  linkType: hard
-
 "@webiny/handler-client@npm:5.39.3":
   version: 5.39.3
   resolution: "@webiny/handler-client@npm:5.39.3"
@@ -11532,17 +11335,6 @@ __metadata:
     "@webiny/error": 5.39.3
     "@webiny/plugins": 5.39.3
   checksum: 6574fa443e834cb7f9f221dc4500ca2da736549c5d21b0ef1100467e4f836216148c93d3ad165e409edbd1276b2b701ac761587677ee824191a520835413049d
-  languageName: node
-  linkType: hard
-
-"@webiny/handler-db@npm:5.39.2":
-  version: 5.39.2
-  resolution: "@webiny/handler-db@npm:5.39.2"
-  dependencies:
-    "@babel/runtime": 7.22.6
-    "@webiny/api": 5.39.2
-    "@webiny/db": 5.39.2
-  checksum: d1d66b4b809a8b3c05588af9e3cf9db91264377bb643a7b70ffe20326b56f82e49ed1da51bed891b58355ca89abefcf706a8ac8f31b865d0cef4a0da0b78aa39
   languageName: node
   linkType: hard
 
@@ -11583,23 +11375,6 @@ __metadata:
     "@webiny/handler": 5.39.3
     node-fetch: 2.6.9
   checksum: 1a32681ba47b750fadfb0560951774980cf7cf8067fa08be0e1063fa8d81e7626fed335b0dad6761c71a64a7223b8d752d80d4cff1484c559f54abaf8102973c
-  languageName: node
-  linkType: hard
-
-"@webiny/handler@npm:5.39.2":
-  version: 5.39.2
-  resolution: "@webiny/handler@npm:5.39.2"
-  dependencies:
-    "@babel/runtime": 7.22.6
-    "@fastify/compress": 6.2.0
-    "@fastify/cookie": 8.3.0
-    "@webiny/api": 5.39.2
-    "@webiny/error": 5.39.2
-    "@webiny/handler-client": 5.39.2
-    "@webiny/plugins": 5.39.2
-    "@webiny/utils": 5.39.2
-    fastify: 4.11.0
-  checksum: 79437a13d3ce2668567dfa01abfab127b286e160f5810393393824ccddb0f7b5d55b8f3fa57207a1367f2f0e61b3f87f4c9a1c4b22d89fdcb9afba8a43a738e7
   languageName: node
   linkType: hard
 
@@ -11646,15 +11421,6 @@ __metadata:
   peerDependencies:
     react: ^17.0.2
   checksum: cc241e7fad566269d72bb069f12b1f25a29b3e16e25efaa8060a2bda71fe3e130a37dd8d24c9fb9760e48602f3476e2ff6a75a9fbba05d4695ac167eeadad9ad
-  languageName: node
-  linkType: hard
-
-"@webiny/ioc@npm:5.39.2":
-  version: 5.39.2
-  resolution: "@webiny/ioc@npm:5.39.2"
-  dependencies:
-    inversify: 6.0.1
-  checksum: 05a77038b10e3c52729c3d2d9fe387f640860cdfdab378c46044f163f805b731cbee31f99372604c80c892ec1fe6f01c2061ca33ebc3717407e382a59ab8371a
   languageName: node
   linkType: hard
 
@@ -11773,31 +11539,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@webiny/logger@npm:5.39.2":
-  version: 5.39.2
-  resolution: "@webiny/logger@npm:5.39.2"
-  dependencies:
-    "@babel/runtime": 7.22.6
-  checksum: 1447bc57fc928ea4de111da93dca436ad50c2359723c280385a78c49c36648d35ec69258a24ee5f7e6d42227db93a5f8c59d9624e6ea5bb94bad87168b1a7161
-  languageName: node
-  linkType: hard
-
 "@webiny/logger@npm:5.39.3":
   version: 5.39.3
   resolution: "@webiny/logger@npm:5.39.3"
   dependencies:
     "@babel/runtime": 7.22.6
   checksum: f5fec930e833f9f0a329234c992fc157cf251b44b10a8d2e88ca1b8279f4ee9326b56c98df885796c8f731b184bc20901dbc909de04399ce54058e552048ebc9
-  languageName: node
-  linkType: hard
-
-"@webiny/plugins@npm:5.39.2":
-  version: 5.39.2
-  resolution: "@webiny/plugins@npm:5.39.2"
-  dependencies:
-    "@babel/runtime": 7.22.6
-    uniqid: 5.4.0
-  checksum: aa1a0457ce89b57f2129f30fef3bc862149c6a0cbba1629b3b664ca9520ae2876790e0f24b6faf19379201524cc45d7e0bc146cdf0aa635e7a7e43c3bc40c745
   languageName: node
   linkType: hard
 
@@ -11895,22 +11642,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@webiny/pulumi-aws@npm:5.39.2":
-  version: 5.39.2
-  resolution: "@webiny/pulumi-aws@npm:5.39.2"
-  dependencies:
-    "@pulumi/aws": ^5.42.0
-    "@pulumi/pulumi": ^3.99.0
-    "@pulumi/random": v3.2.0
-    "@webiny/aws-sdk": 5.39.2
-    "@webiny/cli-plugin-deploy-pulumi": 5.39.2
-    "@webiny/pulumi": 5.39.2
-    form-data: 4.0.0
-    node-fetch: 2.6.9
-  checksum: c668aeb345d52f97e13beac0ba3630d3b1e3cadb34de88a2066cc48628c1e49d3edfb3484b506f8364c68945a96189f7c4fa2bcef3a3d81d6b17fe0739a9856c
-  languageName: node
-  linkType: hard
-
 "@webiny/pulumi-aws@npm:5.39.3":
   version: 5.39.3
   resolution: "@webiny/pulumi-aws@npm:5.39.3"
@@ -11924,23 +11655,6 @@ __metadata:
     form-data: 4.0.0
     node-fetch: 2.6.9
   checksum: ddcf1049baf55228f230f52e55f24f3bdf2372aa8a222cea3938c2f7ad59b59a2c19d77d017570daed4b5134472281e729f0524ec40ae52bc87e56cd3d2a0fab
-  languageName: node
-  linkType: hard
-
-"@webiny/pulumi-sdk@npm:5.39.2":
-  version: 5.39.2
-  resolution: "@webiny/pulumi-sdk@npm:5.39.2"
-  dependencies:
-    "@pulumi/aws": ^5.42.0
-    "@pulumi/pulumi": ^3.99.0
-    decompress: 4.2.1
-    download: 5.0.3
-    execa: 5.1.1
-    fs-extra: 9.1.0
-    lodash: 4.17.21
-    semver: 7.5.4
-    tar: 6.1.13
-  checksum: 5221af71b9a66c93c1ae25838d4e284c732b4da09dfb8b098a580946b23c472a11b53a8777f615ea1d33f66af4e778ac827f20eb30f0945b404582788a716d7a
   languageName: node
   linkType: hard
 
@@ -11958,17 +11672,6 @@ __metadata:
     semver: 7.5.4
     tar: 6.1.13
   checksum: 4e89f0e4d7591e9d26098cb2b9d35935a71c6405bb3707102e2884b559e134377357735a060c3be2af52c27f055b4100351de9af49395e36e2eb809799e5cf4c
-  languageName: node
-  linkType: hard
-
-"@webiny/pulumi@npm:5.39.2":
-  version: 5.39.2
-  resolution: "@webiny/pulumi@npm:5.39.2"
-  dependencies:
-    "@pulumi/pulumi": ^3.99.0
-    find-up: 5.0.0
-    lodash: 4.17.21
-  checksum: 60a48602dda2e1930f6190583ffde253d33b0de2a6aa7e972755e9bfcaa4fc2d1a1f29e590bfdf5eace143e6d5be15b8f603220a29b1a630fd2a5991f51802b3
   languageName: node
   linkType: hard
 
@@ -12124,17 +11827,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@webiny/telemetry@npm:5.39.2":
-  version: 5.39.2
-  resolution: "@webiny/telemetry@npm:5.39.2"
-  dependencies:
-    "@webiny/global-config": 5.39.2
-    form-data: 3.0.0
-    node-fetch: 2.6.1
-  checksum: ffd6f294888e71b71afe668bd6dee918c8efd64aeb6a98f56ae9144f452d8f0f23b57563640a829f825fabaa5f95e16a5bb871dace850813b857355472f5699e
-  languageName: node
-  linkType: hard
-
 "@webiny/telemetry@npm:5.39.3":
   version: 5.39.3
   resolution: "@webiny/telemetry@npm:5.39.3"
@@ -12235,21 +11927,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@webiny/utils@npm:5.39.2":
-  version: 5.39.2
-  resolution: "@webiny/utils@npm:5.39.2"
-  dependencies:
-    "@webiny/error": 5.39.2
-    mdbid: 1.0.0
-    nanoid: 3.3.4
-    nanoid-dictionary: 4.3.0
-    p-retry: 4.6.2
-  peerDependencies:
-    zod: ^3.21.4
-  checksum: b11bac9d142fa439d03a35fa8c2b922fbbd00fcf94c5f4bcbc5b39b29bbcda373ea5162fb70d139cb51527b239c6c29eb4cefceb86159fb5f40090c8635bb3b8
-  languageName: node
-  linkType: hard
-
 "@webiny/utils@npm:5.39.3":
   version: 5.39.3
   resolution: "@webiny/utils@npm:5.39.3"
@@ -12273,16 +11950,6 @@ __metadata:
     isnumeric: 0.3.3
     lodash: 4.17.21
   checksum: 3337aec7e6419407b2eeda22d6970f0cfcf9520c6492830320e45b8d14651e915545a17c8415e340d4b36e32deb57a671fcac0fff91cd15f092e620ab0b2c023
-  languageName: node
-  linkType: hard
-
-"@webiny/wcp@npm:5.39.2":
-  version: 5.39.2
-  resolution: "@webiny/wcp@npm:5.39.2"
-  dependencies:
-    "@babel/runtime": 7.22.6
-    node-fetch: 2.6.9
-  checksum: 8fbbbd1922239d3941588bee1a19809eadeeb1a80c4f0bc73ce597b48ce6b100a363bd44d4fe8c2ddde407155c0f7280e1ec768dd24e3b2dcfa6b39de3f58cfd
   languageName: node
   linkType: hard
 
@@ -13383,10 +13050,10 @@ __metadata:
 
 "awsconfig@file:libs/awsconfig::locator=asco.webiny%40workspace%3A.":
   version: 0.1.0
-  resolution: "awsconfig@file:libs/awsconfig#libs/awsconfig::hash=82a38f&locator=asco.webiny%40workspace%3A."
+  resolution: "awsconfig@file:libs/awsconfig#libs/awsconfig::hash=c83580&locator=asco.webiny%40workspace%3A."
   dependencies:
-    "@webiny/pulumi-aws": 5.39.2
-  checksum: eae0904e6825be6cab8fbfb3085545a15b7abe6065b1d3b9f9ef74e65f56e4dc6b5655362482df340baabc9031b942a13d10fd299ad37193f997387a2a6ffd7f
+    "@webiny/pulumi-aws": 5.39.3
+  checksum: a7dbe131aa7d5853287068cfbd0fc98238e22f879bacd3ae6452c60e543943c8ecd86e95bdd3bf4f797e7829a13f845e5e8e35c0e7fc6b667999a4fa10656b88
   languageName: node
   linkType: hard
 
