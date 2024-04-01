@@ -34,6 +34,7 @@ import securityPlugins from "./security";
 import tenantManager from "@webiny/api-tenant-manager";
 import { createAuditLogs } from "@webiny/api-audit-logs";
 import { createBackgroundTasks } from "@webiny/api-background-tasks-os";
+import { createInvokeLambdaAfterPublish } from "@asco/invoke-after-content-publish";
 /**
  * APW
  */
@@ -113,7 +114,8 @@ export const handler = createHandler({
         createAco(),
         createAcoPageBuilderContext(),
         createAuditLogs(),
-        scaffoldsPlugins()
+        scaffoldsPlugins(),
+        createInvokeLambdaAfterPublish()
     ],
     debug
 });

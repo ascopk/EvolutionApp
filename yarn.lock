@@ -87,6 +87,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@asco/invoke-after-content-publish@workspace:packages/api/invoke-after-content-publish":
+  version: 0.0.0-use.local
+  resolution: "@asco/invoke-after-content-publish@workspace:packages/api/invoke-after-content-publish"
+  languageName: unknown
+  linkType: soft
+
 "@aws-amplify/auth@npm:5.1.9":
   version: 5.1.9
   resolution: "@aws-amplify/auth@npm:5.1.9"
