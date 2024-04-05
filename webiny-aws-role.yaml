@@ -2,8 +2,14 @@ AWSTemplateFormatVersion: '2010-09-09'
 
 Description: Creates an IAM role with the permissions required to deploy a webiny project to an AWS account.
 
+Parameters:
+  OIDCProviderArn:
+    Description: Arn for the GitHub OIDC Provider.
+    Default: ""
+    Type: String
+
 Resources:
-  Role:
+  WebinyOIDCRole:
     Type: AWS::IAM::Role
     Properties:
       MaxSessionDuration: "21600"
@@ -11,37 +17,23 @@ Resources:
         Version: "2012-10-17"
         Statement:
           - Effect: Allow
+            Action: sts:AssumeRoleWithWebIdentity
             Principal:
-              Service:
-                - cloudfront.amazonaws.com
-                - apigateway.amazonaws.com
-                - cognito-idp.amazonaws.com
-                - dynamodb.amazonaws.com
-                - opensearchservice.amazonaws.com
-                - events.amazonaws.com
-                - iam.amazonaws.com
-                - states.amazonaws.com
-                - lambda.amazonaws.com
-                - edgelambda.amazonaws.com
-                - replicator.lambda.amazonaws.com
-                - s3.amazonaws.com
-                - cloudformation.amazonaws.com
-                - sts.amazonaws.com
-                - sqs.amazonaws.com
-                - ec2.amazonaws.com
-                - logs.amazonaws.com
-              AWS:
-                - arn:aws:iam::785726936497:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AdministratorAccess_b7b3a2de8d1e522c
-            Action: sts:AssumeRole
-      Path: "/service/webiny/"
+              Federated:
+                - !Ref OIDCProviderArn
+            Condition:
+              StringEquals:
+                token.actions.githubusercontent.com:aud: sts.amazonaws.com
+              StringLike:
+                token.actions.githubusercontent.com:sub: !Sub repo:ascogit/ASCO.webiny:*
+      Path: /service/webiny/
     
   CreateWebinyPolicy:
     Type: AWS::IAM::Policy
     Properties:
       PolicyName: DeployWebinyProjectPolicy
       Roles:
-        - !Ref Role
-        - github-oidc-provider-Role-LTHqDV8qeG1A
+        - !Ref WebinyOIDCRole
       PolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -515,6 +507,8 @@ Resources:
               - logs:GetLogEvents
 
 Outputs:
+  WebinyOIDCRole:
+    Value: !GetAtt WebinyOIDCRole.Arn
   PolicyName:
     Description: IAM Policy name
     Value: !Ref CreateWebinyPolicy

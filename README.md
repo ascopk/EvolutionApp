@@ -60,6 +60,18 @@ You can deploy a personal webiny environment in your developer AWS account sandb
 3. confirm the ability to read an existing environment: `yarn webiny info --env=sandbox`
 3. modify files and deploy the `yarn webiny deploy apps/website`
 
+## Webiny Deploy Role OIDC
+
+1. Login to aws sso
+2. Run the command to create the cloudformation stack. OIDC Identity Provider Arn is a required parameter
+```
+aws cloudformation create-stack \
+--stack-name webiny-deploy-role-$env \
+--template-body file://webiny-aws-role.yaml \
+--parameters ParameterKey=OIDCProviderArn,ParameterValue=${ProviderArn} \
+--capabilities CAPABILITY_NAMED_IAM
+```
+
 ## resources
 
 * [webiny cli](https://www.webiny.com/docs/core-development-concepts/basics/webiny-cli)
