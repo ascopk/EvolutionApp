@@ -1,0 +1,78 @@
+# Workflow to prepare a release candidate and deploy to stage environment
+name: Release Candidate Pipeline
+
+on:
+  push:
+    branches: ['release/v**']
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build-test-deploy-stage:
+    name: Release Candidate Pipeline
+    runs-on: ubuntu-latest
+    concurrency: stage
+    environment: stage
+    env:
+      AWS_REGION: ${{ vars.AWS_REGION }}
+      PULUMI_SECRETS_PROVIDER: ${{ secrets.PULUMI_SECRETS_PROVIDER }}
+      PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
+      WEBINY_PULUMI_BACKEND: ${{ secrets.WEBINY_PULUMI_BACKEND }}
+      WCP_PROJECT_ENVIRONMENT_API_KEY: ${{ secrets.WCP_API_KEY }}
+      OKTA_ISSUER: ${{ vars.OKTA_ISSUER }}
+      GITHUB_BRANCH: ${{ github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check branch name syntax
+        run: |
+          if ! [[ "${GITHUB_BRANCH}" =~ '^release/v[0-9]+\.[0-9]+\.[0-9]+$' ]]; then
+            echo "::error title=BranchNameError::Invalid syntax for release branch name: ${GITHUB_BRANCH}. Please use `release/v` followed by a semantic version" 
+            exit 1
+          fi
+
+      - name: Set version
+        run: |
+          echo "VERSION=${GITHUB_BRANCH##release/}" >> $GITHUB_ENV
+          echo "# Version: ${GITHUB_BRANCH##release/}" >> $GITHUB_STEP_SUMMARY
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: 'yarn'
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: us-east-1
+          role-to-assume: arn:aws:iam::953078433933:role/service/webiny/webiny-deploy-role-stage-WebinyOIDCRole-ufbmk82YIWN0
+          role-session-name: AscoWebinyStagePipeline
+
+      - name: Install dependencies
+        run: yarn --immutable
+
+      - name: Check code formatting
+        run: yarn prettier:check
+
+      - name: ESLint
+        run: yarn eslint
+
+      - name: Build custom packages
+        run: yarn webiny workspaces run build --folder packages
+
+      - name: Run unit tests
+        run: yarn test:unit
+
+      - name: Deploy
+        run: yarn webiny deploy --env=stage
+
+      - name: Environment summary
+        run: yarn webiny info --env=stage >> $GITHUB_STEP_SUMMARY
+
+      - name: Run integration tests
+        run: yarn test:integration
+
+      - name: Run end-to-end tests
+        run: yarn test:e2e
