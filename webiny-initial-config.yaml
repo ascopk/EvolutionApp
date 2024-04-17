@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 
-Description: Creates an IAM role with the permissions required to deploy a webiny project to an AWS account.
+Description: Creates initial resources required to setup Webiny on a new AWS account
 
 Parameters:
   OIDCProviderArn:
@@ -8,7 +8,38 @@ Parameters:
     Default: ""
     Type: String
 
+  Environment:
+    Type: String
+    Description: Name of the environment to deploy resources
+    AllowedValues:
+      - "sandbox"
+      - "dev"
+      - "stage"
+      - "prod"
+
 Resources:
+  WebinyStateBucket:
+    DeletionPolicy: Retain
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub 'wby-${Environment}-state'
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      VersioningConfiguration:
+        Status: Enabled
+      Tags: 
+        - Key: CreatedBy
+          Value: Justin Ho
+        - Key: Description
+          Value: S3 bucket containing Webiny state files for Pulumi IAC
+        - Key: Purpose
+          Value: devops
+        - Key: Platform
+          Value: webiny
+
   WebinyOIDCRole:
     Type: AWS::IAM::Role
     Properties:

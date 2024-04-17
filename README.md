@@ -5,8 +5,8 @@ contains infrastructure code hosting the webiny cms platform
 ## webiny monorepo
 
 this repo was initially created with `npx create-webiny-project asco.webiny --force`  
-manual resources that are not included in the initial webiny deployment are located in `webiny-aws-config.yaml` and created with the aws cloudformation cli
-  * example: `aws cloudformation update-stack --stack-name sandbox-webiny-aws-config --template-body file://webiny-aws-config.yaml --parameters ParameterKey=Environment,ParameterValue=sandbox --capabilities CAPABILITY_NAMED_IAM` 
+manual resources that are not included in the initial webiny deployment are located in `webiny-initial-config.yaml` and created with the aws cloudformation cli
+  * example: `aws cloudformation update-stack --stack-name sandbox-webiny-initial-config --template-body file://webiny-initial-config.yaml --parameters ParameterKey=Environment,ParameterValue=sandbox ParameterKey=OIDCProviderArn,ParameterValue="arn:aws:iam::785726936497:oidc-provider/token.actions.githubusercontent.com" --capabilities CAPABILITY_NAMED_IAM`
 
 webiny has four applications in it's platform:
 1. core
@@ -30,6 +30,8 @@ You can deploy a personal webiny environment in your developer AWS account sandb
 4. Use the [Personal Environment](https://github.com/ascogit/ASCO.webiny/actions/workflows/personal.yml) github actions workflow
 5. Insert the role ARN as the `AWS_OIDC_ROLE` parameter and run the workflow
 6. When completed, the workflow summary page will show the urls for your own personal Webiny environment
+
+Any changes that need to be deployed in your personal environment can be done by rerunning the [Personal Environment](https://github.com/ascogit/ASCO.webiny/actions/workflows/personal.yml) github actions workflow on your branch
 
 ## cli examples
 

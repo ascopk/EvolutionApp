@@ -58,7 +58,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: us-east-1
-          role-to-assume: arn:aws:iam::121566555105:role/service/webiny/webiny-deploy-role-prod-WebinyOIDCRole-cYCiVw6Ug5fk
+          role-to-assume: arn:aws:iam::121566555105:role/service/webiny/prod-webiny-initial-config-WebinyOIDCRole-CqMXxkwa88s3
           role-session-name: AscoWebinyProdPipeline
 
       - name: Install dependencies
