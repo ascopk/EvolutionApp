@@ -16,12 +16,13 @@ jobs:
     environment: prod
     env:
       AWS_REGION: ${{ vars.AWS_REGION }}
-      PULUMI_SECRETS_PROVIDER: ${{ secrets.PULUMI_SECRETS_PROVIDER }}
-      PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
-      WEBINY_PULUMI_BACKEND: ${{ secrets.WEBINY_PULUMI_BACKEND }}
-      WCP_PROJECT_ENVIRONMENT_API_KEY: ${{ secrets.WCP_API_KEY }}
       OKTA_ISSUER: ${{ vars.OKTA_ISSUER }}
-      GITHUB_BRANCH: ${{ github.ref_name }}
+      PULUMI_SECRETS_PROVIDER: passphrase
+      PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
+      WEBINY_PULUMI_BACKEND: s3://wby-prod-webiny-pulumi-state
+      WEBINY_OIDC_Role: arn:aws:iam::121566555105:role/service/webiny/prod-webiny-config-WebinyOIDCRole-zDkkoS26lWkL
+      WCP_PROJECT_ENVIRONMENT_API_KEY: ${{ secrets.WCP_API_KEY }}
+      GITHUB_BRANCH: ${{ github.ref_name }}    
     steps: 
       - uses: actions/checkout@v4
         with:
@@ -58,7 +59,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: us-east-1
-          role-to-assume: arn:aws:iam::121566555105:role/service/webiny/prod-webiny-initial-config-WebinyOIDCRole-CqMXxkwa88s3
+          role-to-assume: ${{ env.WEBINY_OIDC_Role }}
           role-session-name: AscoWebinyProdPipeline
 
       - name: Install dependencies

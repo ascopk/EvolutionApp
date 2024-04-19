@@ -6,7 +6,7 @@ contains infrastructure code hosting the webiny cms platform
 
 this repo was initially created with `npx create-webiny-project asco.webiny --force`  
 manual resources that are not included in the initial webiny deployment are located in `webiny-initial-config.yaml` and created with the aws cloudformation cli
-  * example: `aws cloudformation update-stack --stack-name sandbox-webiny-initial-config --template-body file://webiny-initial-config.yaml --parameters ParameterKey=Environment,ParameterValue=sandbox ParameterKey=OIDCProviderArn,ParameterValue="arn:aws:iam::785726936497:oidc-provider/token.actions.githubusercontent.com" --capabilities CAPABILITY_NAMED_IAM`
+  * example: `aws cloudformation update-stack --stack-name sandbox-webiny-config --template-body file://webiny-config.yaml --parameters ParameterKey=Environment,ParameterValue=sandbox ParameterKey=OIDCProviderArn,ParameterValue="arn:aws:iam::785726936497:oidc-provider/token.actions.githubusercontent.com" --capabilities CAPABILITY_NAMED_IAM`
 
 webiny has four applications in it's platform:
 1. core

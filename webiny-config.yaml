@@ -22,7 +22,7 @@ Resources:
     DeletionPolicy: Retain
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: !Sub 'wby-${Environment}-state'
+      BucketName: !Sub 'wby-${Environment}-webiny-pulumi-state'
       PublicAccessBlockConfiguration:
         BlockPublicAcls: true
         BlockPublicPolicy: true
@@ -32,7 +32,7 @@ Resources:
         Status: Enabled
       Tags: 
         - Key: CreatedBy
-          Value: Justin Ho
+          Value: Assumed WebinyOIDCRole
         - Key: Description
           Value: S3 bucket containing Webiny state files for Pulumi IAC
         - Key: Purpose
@@ -57,6 +57,14 @@ Resources:
                 token.actions.githubusercontent.com:aud: sts.amazonaws.com
               StringLike:
                 token.actions.githubusercontent.com:sub: !Sub repo:ascogit/ASCO.webiny:*
+          - Effect: Allow
+            Action: sts:AssumeRole
+            Principal: 
+              AWS:
+                - arn:aws:sts::785726936497:assumed-role/AWSReservedSSO_AWS_Role-DevOps_2a67421407f26f1e/JOuser@asco.org
+                - arn:aws:sts::477761241525:assumed-role/AWSReservedSSO_AWS_Role-DevOps_9c073ccba6a6a016/JOuser@asco.org
+                - arn:aws:sts::953078433933:assumed-role/AWSReservedSSO_AWS_Role-DevOps_a7ae15f59d12812b/JOuser@asco.org
+                - arn:aws:sts::121566555105:assumed-role/AWSReservedSSO_AWS_Role-DevOps_ada44a4f0744a271/JOuser@asco.org
       Path: /service/webiny/
     
   CreateWebinyPolicy:
@@ -262,6 +270,7 @@ Resources:
           # AWS Identity and Access Management (IAM)
           - Effect: Allow
             Action:
+              - iam:UpdateAssumeRolePolicy
               - iam:AttachRolePolicy
               - iam:CreatePolicy
               - iam:CreatePolicyVersion
@@ -288,6 +297,7 @@ Resources:
             Resource:
               - arn:aws:iam::*:role/wby-*
               - arn:aws:iam::*:policy/wby-*
+              - arn:aws:iam::*:role/*-webiny-*
 
           # AWS Identity and Access Management (IAM) - Service-Linked Roles
           # Only needed for the "Amazon DynamoDB + Amazon Elasticsearch" database setup.
