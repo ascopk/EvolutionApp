@@ -22,7 +22,8 @@ jobs:
       WEBINY_PULUMI_BACKEND: s3://wby-prod-webiny-pulumi-state
       WEBINY_OIDC_Role: arn:aws:iam::121566555105:role/service/webiny/prod-webiny-config-WebinyOIDCRole-zDkkoS26lWkL
       WCP_PROJECT_ENVIRONMENT_API_KEY: ${{ secrets.WCP_API_KEY }}
-      GITHUB_BRANCH: ${{ github.ref_name }}    
+      GITHUB_BRANCH: ${{ github.ref_name }}
+      WEBINY_ADMIN_BRANDFOLDER_KEY: ${{ secrets.WEBINY_ADMIN_BRANDFOLDER_KEY }}
     steps: 
       - uses: actions/checkout@v4
         with:

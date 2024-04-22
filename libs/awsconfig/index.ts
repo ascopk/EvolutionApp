@@ -38,7 +38,7 @@ type awsResourceArns = {
     "prod": {
       "cert": "arn:aws:acm:us-east-1:121566555105:certificate/f1d38be1-6945-42f8-80e9-6dd8bc0ae010", //asco.org
       "tls": tlsVersion,
-      "subnets": ["subnet-04272464b2fc3b352","subnet-0cda55c6c3bfc9b4f","prod-sharedvpc-private-AZ3"], //prod-sharedvpc-private-AZ1,AZ2,AZ3
+      "subnets": ["subnet-04272464b2fc3b352","subnet-0cda55c6c3bfc9b4f","subnet-0adcb674030a6f800"], //prod-sharedvpc-private-AZ1,AZ2,AZ3
       "securitygroups": ["sg-03aaa4423c97da278"], //prod-hub-LoadBalancerSG
       "waf": "arn:aws:wafv2:us-east-1:121566555105:global/webacl/prod-hub-application/0e0d047b-56f0-4215-b96c-f44680459318" //prod-hub-application
     }
