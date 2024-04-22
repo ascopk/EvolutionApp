@@ -30,7 +30,7 @@ jobs:
 
       - name: Check branch name syntax and set version
         run: |
-          if ! [[ "${GITHUB_BRANCH}" =~ '^release/v[0-9]+\.[0-9]+\.[0-9]+$' ]]; then
+          if ! [[ "${GITHUB_BRANCH}" =~ ^release/v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             echo "::error title=BranchNameError::Invalid syntax for release branch name: ${GITHUB_BRANCH}. Please use `release/v` followed by a semantic version. example: release/v1.0.0" 
             exit 1
           fi
