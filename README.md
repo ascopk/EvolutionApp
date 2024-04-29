@@ -18,6 +18,17 @@ deployment **must** occur in the order stated above: `yarn webiny deploy apps/co
 ensure that the proper webiny credentials are set in `~/.aws/credentials`  
 IAC state is stored in AWS s3. It has to be set as env variable: `WEBINY_PULUMI_BACKEND=s3://wby-sandbox-state`  
 
+## access to webiny
+
+Access to webiny is controlled by the following active directory groups:
+
+* Webiny_Admins
+* Webiny_Editor
+* Webiny_Approver
+* Webiny_MarCom
+
+To request access to Webiny, please open a Jira ticket to the [DEVOPS Jira board](https://asco1.atlassian.net/jira/software/projects/DEVOPS/boards/298/backlog) and request access to one of the active directory groups
+
 ## webiny local development
 
 As stated in the [documentation](https://www.webiny.com/docs/core-development-concepts/development/local-development), since Webiny is a serverless platform the backend still must be deployed in the cloud and there is little that can be done locally.
@@ -32,6 +43,8 @@ You can deploy a personal webiny environment in your developer AWS account sandb
 6. When completed, the workflow summary page will show the urls for your own personal Webiny environment
 
 Any changes that need to be deployed in your personal environment can be done by rerunning the [Personal Environment](https://github.com/ascogit/ASCO.webiny/actions/workflows/personal.yml) github actions workflow on your branch
+
+if there are changes to any of the libs (like awslibs or a dependency), please ensure that you run a `yarn install` to update the `yarn.lock` file and check that in to the Pull Reuqest
 
 ## cli examples
 
