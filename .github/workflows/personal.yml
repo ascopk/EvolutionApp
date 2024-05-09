@@ -37,7 +37,7 @@ jobs:
           role-to-assume: ${{ inputs.WEBINY_OIDC_Role }}
           role-session-name: AscoWebinyPersonal_${{ github.actor }}
       - name: Create pulumi state bucket
-        run: aws s3 mb s3://wby-pulumi-state-${{ github.actor }}
+        run: aws s3 mb ${{ env.WEBINY_PULUMI_BACKEND }}
       - name: Install dependencies
         run: yarn --immutable
       - name: Deploy webiny
