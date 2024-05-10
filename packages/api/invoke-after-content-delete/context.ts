@@ -26,7 +26,7 @@ export const createContext = () => {
                 //         })
                 //     })
                 // )
-
+                console.log(model,entry);
                 // /**
                 //  * Extract response from lambda, not sure what to do with it as of now
                 //  */
