@@ -61,7 +61,8 @@
 			"apps/theme",
 			"apps/api/graphql",
 			"apps/api/headlessCMS",
-			"libs/*"
+			"libs/*",
+			"packages/**/*"
 		]
 	},
 	"scripts": {

@@ -1,0 +1,15 @@
+{
+    "name": "@asco/invoke-after-content-delete",
+    "version": "1.0.0",
+    "description": "This Plugin will trigger lambda function after content is deleted",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\"&& exit 1"
+    },
+    "keywords": [
+        "lambda",
+        "onEntryAfterDelete"
+    ],
+    "author": "Praveen",
+    "license": "MIT"
+}

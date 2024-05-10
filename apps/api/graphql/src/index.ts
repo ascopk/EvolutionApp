@@ -34,6 +34,11 @@ import securityPlugins from "./security";
 import tenantManager from "@webiny/api-tenant-manager";
 import { createAuditLogs } from "@webiny/api-audit-logs";
 import { createBackgroundTasks } from "@webiny/api-background-tasks-os";
+import { createInvokeLambdaAfterPublish } from "@asco/invoke-after-content-publish";
+import { createInvokeLambdaAfterCreate } from "@asco/invoke-after-content-create";
+import { createInvokeLambdaAfterDelete } from "@asco/invoke-after-content-delete";
+import { createInvokeLambdaAfterUpdate } from "@asco/invoke-after-content-update";
+import { createInvokeLambdaAfterUnpublish } from "@asco/invoke-after-content-unpublish";
 
 /**
  * APW
@@ -114,7 +119,12 @@ export const handler = createHandler({
         createAco(),
         createAcoPageBuilderContext(),
         createAuditLogs(),
-        scaffoldsPlugins()
+        scaffoldsPlugins(),
+        createInvokeLambdaAfterPublish(),
+        createInvokeLambdaAfterCreate(),
+        createInvokeLambdaAfterDelete(),
+        createInvokeLambdaAfterUpdate(),
+        createInvokeLambdaAfterUnpublish()
     ],
     debug
 });

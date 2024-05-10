@@ -1,0 +1,15 @@
+{
+    "name": "@asco/invoke-after-content-unpublish",
+    "version": "1.0.0",
+    "description": "This Plugin will trigger lambda function after content is Unpublished",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\"&& exit 1"
+    },
+    "keywords": [
+        "lambda",
+        "onEntryAfterUnpublish"
+    ],
+    "author": "Praveen",
+    "license": "MIT"
+}
