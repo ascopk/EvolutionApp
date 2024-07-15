@@ -126,7 +126,7 @@ export const handler = createHandler({
         createInvokeLambdaAfterDelete(),
         createInvokeLambdaAfterUpdate(),
         createInvokeLambdaAfterUnpublish(),
-        ...ascoModelsAndGroups
+        //...ascoModelsAndGroups
     ],
     debug
 });
