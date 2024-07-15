@@ -39,6 +39,7 @@ import { createInvokeLambdaAfterCreate } from "@asco/invoke-after-content-create
 import { createInvokeLambdaAfterDelete } from "@asco/invoke-after-content-delete";
 import { createInvokeLambdaAfterUpdate } from "@asco/invoke-after-content-update";
 import { createInvokeLambdaAfterUnpublish } from "@asco/invoke-after-content-unpublish";
+import ascoModelsAndGroups from "./plugins/models";
 
 /**
  * APW
@@ -124,7 +125,8 @@ export const handler = createHandler({
         createInvokeLambdaAfterCreate(),
         createInvokeLambdaAfterDelete(),
         createInvokeLambdaAfterUpdate(),
-        createInvokeLambdaAfterUnpublish()
+        createInvokeLambdaAfterUnpublish(),
+        ...ascoModelsAndGroups
     ],
     debug
 });
