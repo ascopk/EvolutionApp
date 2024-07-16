@@ -4,8 +4,8 @@ import fs from "fs";
 const GroupsJson = JSON.parse(fs.readFileSync('./groups.json', 'utf8'));
 const ModelsJson = JSON.parse(fs.readFileSync('./models.json', 'utf8'));
 
-var Groups: CmsGroupPlugin[] = new Array();
-var Models: CmsModelPlugin[] = new Array();
+const Groups: CmsGroupPlugin[] = [];
+const Models: CmsModelPlugin[] = [];
 
 GroupsJson.forEach((element: CmsGroupInput) => {
     Groups.push(new CmsGroupPlugin(element));
