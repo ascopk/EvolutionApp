@@ -4277,10 +4277,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@brandfolder-panel/sdk@npm:^0.9.24":
-  version: 0.9.24
-  resolution: "@brandfolder-panel/sdk@npm:0.9.24"
-  checksum: bc5452992c4bdfc62921903e01fc63e5ce05a892c12e3d5081121d24a48c93bf1f8653130f87fc9403fa0f06bf0a4547c9d0cd7bd4c18c667873c587753fc869
+"@brandfolder-panel/sdk@npm:^0.9.26":
+  version: 0.9.26
+  resolution: "@brandfolder-panel/sdk@npm:0.9.26"
+  checksum: 7c3e33b0199c6d5d1c98b3c2f4650b268e44c62599b6dae6b417be5332615950eeb7662eed09d449ecb550f4ad2a49916c3555ebac5bd93b17c0c95e6983bbcb
   languageName: node
   linkType: hard
 
@@ -12201,7 +12201,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "admin@workspace:apps/admin"
   dependencies:
-    "@brandfolder-panel/sdk": ^0.9.24
+    "@brandfolder-panel/sdk": ^0.9.26
     "@editorjs/delimiter": 1.3.0
     "@editorjs/list": 1.8.0
     "@editorjs/quote": 2.5.0
