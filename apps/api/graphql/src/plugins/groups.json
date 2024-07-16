@@ -1,0 +1,9 @@
+[
+    {
+        "id": "ascoHub",
+        "name": "ASCO Hub",
+        "description": "All content models related to ASCO.org.",
+        "slug": "ascoHub",
+        "icon": "fas/home-lg"
+    }
+]

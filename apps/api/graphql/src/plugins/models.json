@@ -1,0 +1,2508 @@
+[
+    {
+        "modelId": "basicPage",
+        "name": "Basic Page",
+        "group": {
+            "id": "ascoHub",
+            "name": "ASCO Hub"
+        },
+        "icon": "far/file-word",
+        "description": "To use for basic content pages.",
+        "singularApiName": "BasicPage",
+        "pluralApiName": "BasicPages",
+        "fields": [
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "text-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Page Title",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "pageTitle",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Title is a required field.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "pageTitle"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "text-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "URL Path",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "urlPath",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Value is required.",
+                        "settings": {}
+                    },
+                    {
+                        "name": "unique",
+                        "message": "Value must be unique.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "urlPath"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "select-box"
+                },
+                "helpText": "Select one site where this page will appear, such as asco.org.",
+                "predefinedValues": {
+                    "enabled": true,
+                    "values": [
+                        {
+                            "value": "SOCIETY",
+                            "selected": true,
+                            "label": "ASCO.org"
+                        },
+                        {
+                            "value": "ASSN",
+                            "selected": true,
+                            "label": "ASCO Assn"
+                        },
+                        {
+                            "value": "AM",
+                            "selected": false,
+                            "label": "Annual Meeting"
+                        },
+                        {
+                            "value": "GI",
+                            "selected": false,
+                            "label": "GI Meeting"
+                        },
+                        {
+                            "value": "GU",
+                            "selected": false,
+                            "label": "GU Meeting"
+                        },
+                        {
+                            "value": "QCS",
+                            "selected": false,
+                            "label": "Quality"
+                        },
+                        {
+                            "value": "BKT",
+                            "selected": false,
+                            "label": "Breakthrough"
+                        },
+                        {
+                            "value": "BOA",
+                            "selected": false,
+                            "label": "Best of ASCO"
+                        }
+                    ]
+                },
+                "label": "Site Picker",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "sitePicker",
+                "validation": [],
+                "fieldId": "sitePicker"
+            },
+            {
+                "multipleValues": true,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "lexical-text-inputs"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Body",
+                "type": "rich-text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "fullBody",
+                "validation": [],
+                "fieldId": "fullBody"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "long-text-text-area"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Summary",
+                "type": "long-text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "summary",
+                "validation": [
+                    {
+                        "name": "maxLength",
+                        "message": "Value is too long.",
+                        "settings": {
+                            "value": "250"
+                        }
+                    }
+                ],
+                "fieldId": "summary"
+            }
+        ],
+        "layout": [
+            [
+                "pageTitle"
+            ],
+            [
+                "urlPath"
+            ],
+            [
+                "sitePicker"
+            ],
+            [
+                "fullBody"
+            ],
+            [
+                "summary"
+            ]
+        ],
+        "titleFieldId": "pageTitle",
+        "descriptionFieldId": "summary"
+    },
+    {
+        "modelId": "abstract",
+        "name": "Abstract",
+        "group": {
+            "id": "ascoHub",
+            "name": "ASCO Hub"
+        },
+        "icon": "fas/microscope",
+        "description": "To use for abstract content.",
+        "singularApiName": "Abstract",
+        "pluralApiName": "Abstracts",
+        "fields": [
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "lexical-text-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Abstract Title",
+                "type": "rich-text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "abstractTitle",
+                "validation": [],
+                "fieldId": "abstractTitle"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "lexical-text-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Body",
+                "type": "rich-text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "fullBody",
+                "validation": [],
+                "fieldId": "fullBody"
+            }
+        ],
+        "layout": [
+            [
+                "abstractTitle"
+            ],
+            [
+                "fullBody"
+            ]
+        ],
+        "titleFieldId": "id"
+    },
+    {
+        "modelId": "ascoInAction",
+        "name": "ASCO in Action",
+        "group": {
+            "id": "ascoHub",
+            "name": "ASCO Hub"
+        },
+        "icon": "fas/hands-helping",
+        "description": "To use for ASCO in Action posts.",
+        "singularApiName": "AscoInAction",
+        "pluralApiName": "AscoInActions",
+        "fields": [
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "text-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Title",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "title",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Title is a required field.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "title"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "long-text-text-area"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Description",
+                "type": "long-text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "description",
+                "validation": [],
+                "fieldId": "description"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "text-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Subtitle",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "subtitle",
+                "validation": [],
+                "fieldId": "subtitle"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "boolean-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Blog Post Associated",
+                "type": "boolean",
+                "tags": [],
+                "placeholderText": null,
+                "id": "blogPostAssociated",
+                "validation": [],
+                "fieldId": "blogPostAssociated"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {
+                    "type": "date"
+                },
+                "renderer": {
+                    "name": "date-time-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Date",
+                "type": "datetime",
+                "tags": [],
+                "placeholderText": null,
+                "id": "date",
+                "validation": [
+                    {
+                        "name": "dateGte",
+                        "message": "Date/time is earlier than the provided one.",
+                        "settings": {}
+                    },
+                    {
+                        "name": "required",
+                        "message": "Value is required.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "date"
+            },
+            {
+                "multipleValues": true,
+                "listValidation": [],
+                "settings": {
+                    "type": "date"
+                },
+                "renderer": {
+                    "name": "date-time-inputs"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Time",
+                "type": "datetime",
+                "tags": [],
+                "placeholderText": null,
+                "id": "time",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Value is required.",
+                        "settings": {}
+                    },
+                    {
+                        "name": "dateGte",
+                        "message": "Date/time is earlier than the provided one.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "time"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {
+                    "fields": [
+                        {
+                            "renderer": {
+                                "name": "text-input"
+                            },
+                            "label": "Name",
+                            "id": "name",
+                            "type": "text",
+                            "validation": [],
+                            "fieldId": "name"
+                        },
+                        {
+                            "multipleValues": false,
+                            "listValidation": [],
+                            "renderer": {
+                                "name": "number-input"
+                            },
+                            "predefinedValues": {
+                                "enabled": false
+                            },
+                            "label": "Phone",
+                            "id": "phone",
+                            "type": "number",
+                            "validation": [],
+                            "fieldId": "phone"
+                        },
+                        {
+                            "multipleValues": true,
+                            "listValidation": [],
+                            "renderer": {
+                                "name": "text-inputs"
+                            },
+                            "label": "Email",
+                            "id": "email",
+                            "type": "text",
+                            "validation": [
+                                {
+                                    "name": "pattern",
+                                    "message": "Please enter a valid e-mail.",
+                                    "settings": {
+                                        "flags": null,
+                                        "regex": null,
+                                        "preset": "email"
+                                    }
+                                }
+                            ],
+                            "fieldId": "email"
+                        }
+                    ],
+                    "layout": [
+                        [
+                            "name"
+                        ],
+                        [
+                            "phone"
+                        ],
+                        [
+                            "email"
+                        ]
+                    ]
+                },
+                "renderer": {
+                    "name": "object"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Contact",
+                "type": "object",
+                "tags": [],
+                "placeholderText": null,
+                "id": "contact",
+                "validation": [],
+                "fieldId": "contact"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [
+                    {
+                        "name": "dynamicZone",
+                        "message": "Value is required.",
+                        "settings": {}
+                    }
+                ],
+                "settings": {
+                    "templates": [
+                        {
+                            "layout": [
+                                [
+                                    "copy"
+                                ]
+                            ],
+                            "gqlTypeName": "Body",
+                            "name": "Body",
+                            "icon": "far/file-word",
+                            "description": "Body copy for releases.",
+                            "id": "body",
+                            "fields": [
+                                {
+                                    "renderer": {
+                                        "name": "lexical-text-input"
+                                    },
+                                    "label": "WYSIWYG",
+                                    "id": "copy",
+                                    "type": "rich-text",
+                                    "validation": [],
+                                    "fieldId": "copy"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "renderer": {
+                    "name": "dynamicZone"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Release Content",
+                "type": "dynamicZone",
+                "tags": [],
+                "placeholderText": null,
+                "id": "releaseContent",
+                "validation": [],
+                "fieldId": "releaseContent"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {
+                    "fields": [
+                        {
+                            "renderer": {
+                                "name": "boolean-input"
+                            },
+                            "label": "ASCO News",
+                            "id": "ascoNews",
+                            "type": "boolean",
+                            "validation": [],
+                            "fieldId": "ascoNews"
+                        },
+                        {
+                            "renderer": {
+                                "name": "boolean-input"
+                            },
+                            "label": "Association News",
+                            "id": "associationNews",
+                            "type": "boolean",
+                            "validation": [],
+                            "fieldId": "associationNews"
+                        },
+                        {
+                            "renderer": {
+                                "name": "boolean-input"
+                            },
+                            "label": "CancerLinQ News",
+                            "id": "cancerLinQNews",
+                            "type": "boolean",
+                            "validation": [],
+                            "fieldId": "cancerLinQNews"
+                        },
+                        {
+                            "renderer": {
+                                "name": "boolean-input"
+                            },
+                            "label": "Guidelines News",
+                            "id": "guidelinesNews",
+                            "type": "boolean",
+                            "validation": [],
+                            "fieldId": "guidelinesNews"
+                        },
+                        {
+                            "renderer": {
+                                "name": "boolean-input"
+                            },
+                            "label": "Journals News",
+                            "id": "journalsNews",
+                            "type": "boolean",
+                            "validation": [],
+                            "fieldId": "journalsNews"
+                        },
+                        {
+                            "renderer": {
+                                "name": "boolean-input"
+                            },
+                            "label": "Meetings News",
+                            "id": "meetingsNews",
+                            "type": "boolean",
+                            "validation": [],
+                            "fieldId": "meetingsNews"
+                        },
+                        {
+                            "renderer": {
+                                "name": "boolean-input"
+                            },
+                            "label": "Policy News",
+                            "id": "policyNews",
+                            "type": "boolean",
+                            "validation": [],
+                            "fieldId": "policyNews"
+                        },
+                        {
+                            "renderer": {
+                                "name": "boolean-input"
+                            },
+                            "label": "Quality Programs News",
+                            "id": "qualityProgramsNews",
+                            "type": "boolean",
+                            "validation": [],
+                            "fieldId": "qualityProgramsNews"
+                        },
+                        {
+                            "renderer": {
+                                "name": "boolean-input"
+                            },
+                            "label": "TAPUR Study News",
+                            "id": "tapurStudyNews",
+                            "type": "boolean",
+                            "validation": [],
+                            "fieldId": "tapurStudyNews"
+                        }
+                    ],
+                    "layout": [
+                        [
+                            "ascoNews"
+                        ],
+                        [
+                            "associationNews"
+                        ],
+                        [
+                            "cancerLinQNews"
+                        ],
+                        [
+                            "guidelinesNews"
+                        ],
+                        [
+                            "journalsNews"
+                        ],
+                        [
+                            "meetingsNews"
+                        ],
+                        [
+                            "policyNews"
+                        ],
+                        [
+                            "qualityProgramsNews"
+                        ],
+                        [
+                            "tapurStudyNews"
+                        ]
+                    ]
+                },
+                "renderer": {
+                    "name": "object"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Release Category",
+                "type": "object",
+                "tags": [],
+                "placeholderText": null,
+                "id": "releaseCategory",
+                "validation": [],
+                "fieldId": "releaseCategory"
+            }
+        ],
+        "layout": [
+            [
+                "title"
+            ],
+            [
+                "subtitle"
+            ],
+            [
+                "blogPostAssociated"
+            ],
+            [
+                "date"
+            ],
+            [
+                "time"
+            ],
+            [
+                "contact"
+            ],
+            [
+                "description"
+            ],
+            [
+                "releaseContent"
+            ],
+            [
+                "releaseCategory"
+            ]
+        ],
+        "titleFieldId": "title",
+        "descriptionFieldId": "description"
+    },
+    {
+        "modelId": "branchPage",
+        "name": "Branch Page",
+        "group": {
+            "id": "ascoHub",
+            "name": "ASCO Hub"
+        },
+        "icon": "fas/folder-tree",
+        "description": "To use for pages that have children or other groupings of pages.",
+        "singularApiName": "Branch",
+        "pluralApiName": "Branches",
+        "fields": [
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "text-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Page Title",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "pageTitle",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Title is a required field.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "pageTitle"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "text-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "URL Path",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "urlPath",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Value is required.",
+                        "settings": {}
+                    },
+                    {
+                        "name": "unique",
+                        "message": "Value must be unique.",
+                        "settings": {}
+                    },
+                    {
+                        "name": "pattern",
+                        "message": "Please enter a valid URL.",
+                        "settings": {
+                            "flags": null,
+                            "regex": null,
+                            "preset": "url"
+                        }
+                    }
+                ],
+                "fieldId": "urlPath"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "text-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Advertising Code",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "advertisingCode",
+                "validation": [],
+                "fieldId": "advertisingCode"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "select-box"
+                },
+                "helpText": "Select one site where this page will appear, such as asco.org.",
+                "predefinedValues": {
+                    "enabled": true,
+                    "values": [
+                        {
+                            "value": "ASCO Society",
+                            "selected": true,
+                            "label": "ASCO.org"
+                        },
+                        {
+                            "value": "Assn",
+                            "selected": true,
+                            "label": "ASCO Assn"
+                        },
+                        {
+                            "value": "AM",
+                            "selected": true,
+                            "label": "Annual Meeting"
+                        },
+                        {
+                            "value": "GI",
+                            "selected": true,
+                            "label": "GI Meeting"
+                        },
+                        {
+                            "value": "GU",
+                            "selected": true,
+                            "label": "GU Meeting"
+                        },
+                        {
+                            "value": "QCS",
+                            "selected": true,
+                            "label": "Quality"
+                        },
+                        {
+                            "value": "BKT",
+                            "selected": true,
+                            "label": "Breakthrough"
+                        },
+                        {
+                            "value": "BOA",
+                            "selected": true,
+                            "label": "Best of ASCO"
+                        }
+                    ]
+                },
+                "label": "Site Picker",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "sitePicker",
+                "validation": [],
+                "fieldId": "sitePicker"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [
+                    {
+                        "name": "dynamicZone",
+                        "message": "Value is required.",
+                        "settings": {}
+                    }
+                ],
+                "settings": {
+                    "templates": [
+                        {
+                            "layout": [
+                                [
+                                    "quote"
+                                ]
+                            ],
+                            "gqlTypeName": "PullQuote",
+                            "name": "Pull Quote",
+                            "icon": "fas/quote-left",
+                            "description": "To use for pull quotes.",
+                            "id": "pullQuote",
+                            "fields": [
+                                {
+                                    "renderer": {
+                                        "name": "text-input"
+                                    },
+                                    "label": "Quote",
+                                    "id": "quote",
+                                    "type": "text",
+                                    "validation": [],
+                                    "fieldId": "quote"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "renderer": {
+                    "name": "dynamicZone"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Components",
+                "type": "dynamicZone",
+                "tags": [],
+                "placeholderText": null,
+                "id": "components",
+                "validation": [],
+                "fieldId": "components"
+            },
+            {
+                "multipleValues": true,
+                "listValidation": [
+                    {
+                        "name": "maxLength",
+                        "message": "Value is too long.",
+                        "settings": {
+                            "value": "250"
+                        }
+                    }
+                ],
+                "settings": {},
+                "renderer": {
+                    "name": "long-text-inputs"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Summary",
+                "type": "long-text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "fullSummary",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Value is required.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "fullSummary"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "lexical-text-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Body",
+                "type": "rich-text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "fullBody",
+                "validation": [],
+                "fieldId": "fullBody"
+            }
+        ],
+        "layout": [
+            [
+                "advertisingCode"
+            ],
+            [
+                "sitePicker"
+            ],
+            [
+                "pageTitle"
+            ],
+            [
+                "fullSummary"
+            ],
+            [
+                "fullBody"
+            ],
+            [
+                "components"
+            ],
+            [
+                "urlPath"
+            ]
+        ],
+        "titleFieldId": "Pagetitle"
+    },
+    {
+        "modelId": "event",
+        "name": "Event",
+        "group": {
+            "id": "ascoHub",
+            "name": "ASCO Hub"
+        },
+        "icon": "fas/calendar-check",
+        "description": "For use on the ASCO Hub homepage.",
+        "singularApiName": "Event",
+        "pluralApiName": "Events",
+        "fields": [
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {
+                    "type": "dateTimeWithoutTimezone",
+                    "defaultSetValue": "null"
+                },
+                "renderer": {
+                    "name": "date-time-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Event Close Date",
+                "type": "datetime",
+                "tags": [],
+                "placeholderText": null,
+                "id": "eventCloseDate",
+                "validation": [],
+                "fieldId": "eventCloseDate"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {
+                    "type": "dateTimeWithoutTimezone",
+                    "defaultSetValue": "null"
+                },
+                "renderer": {
+                    "name": "date-time-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Event Start Date",
+                "type": "datetime",
+                "tags": [],
+                "placeholderText": null,
+                "id": "eventStartDate",
+                "validation": [],
+                "fieldId": "eventStartDate"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "text-input"
+                },
+                "helpText": "Such as Online & In-Person | Alexandria",
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Location",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "location",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Value is required.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "location"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "text-input"
+                },
+                "helpText": "This should be the formal title of the meeting, event, or funding opportunity",
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Event Title",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "shortTitle",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Title is a required field.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "shortTitle"
+            },
+            {
+                "multipleValues": true,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "lexical-text-inputs"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Event Details",
+                "type": "rich-text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "eventDetails",
+                "validation": [],
+                "fieldId": "eventDetails"
+            }
+        ],
+        "layout": [
+            [
+                "shortTitle"
+            ],
+            [
+                "location"
+            ],
+            [
+                "eventStartDate",
+                "eventCloseDate"
+            ],
+            [
+                "eventDetails"
+            ]
+        ],
+        "titleFieldId": "location"
+    },
+    {
+        "modelId": "importantDates",
+        "name": "Important Dates",
+        "group": {
+            "id": "ascoHub",
+            "name": "ASCO Hub"
+        },
+        "icon": "fas/calendar-alt",
+        "description": "For use on the ASCO Hub homepage.",
+        "singularApiName": "ImportantDate",
+        "pluralApiName": "ImportantDates",
+        "fields": [
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {
+                    "fields": [
+                        {
+                            "renderer": {
+                                "name": "radio-buttons"
+                            },
+                            "predefinedValues": {
+                                "enabled": true,
+                                "values": [
+                                    {
+                                        "value": "Register",
+                                        "selected": true,
+                                        "label": "Register"
+                                    },
+                                    {
+                                        "value": "Submit",
+                                        "selected": true,
+                                        "label": "Submit"
+                                    },
+                                    {
+                                        "value": "Apply",
+                                        "selected": true,
+                                        "label": "Apply"
+                                    }
+                                ]
+                            },
+                            "label": "Primary Event CTA",
+                            "id": "primaryEventCta",
+                            "type": "text",
+                            "validation": [],
+                            "fieldId": "primaryEventCta"
+                        },
+                        {
+                            "renderer": {
+                                "name": "text-input"
+                            },
+                            "label": "Primary CTA URL",
+                            "id": "primaryCtaUrl",
+                            "type": "text",
+                            "validation": [
+                                {
+                                    "name": "pattern",
+                                    "message": "Please enter a valid URL.",
+                                    "settings": {
+                                        "flags": null,
+                                        "regex": null,
+                                        "preset": "url"
+                                    }
+                                }
+                            ],
+                            "fieldId": "primaryCtaUrl"
+                        }
+                    ],
+                    "layout": [
+                        [
+                            "primaryEventCta",
+                            "primaryCtaUrl"
+                        ]
+                    ]
+                },
+                "renderer": {
+                    "name": "object"
+                },
+                "helpText": "Copy will appear as a button.",
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Primary Call to Action(s)",
+                "type": "object",
+                "tags": [],
+                "placeholderText": null,
+                "id": "primaryCta",
+                "validation": [],
+                "fieldId": "primaryCta"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {
+                    "type": "dateTimeWithoutTimezone",
+                    "defaultSetValue": "null"
+                },
+                "renderer": {
+                    "name": "date-time-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Event Close Date",
+                "type": "datetime",
+                "tags": [],
+                "placeholderText": null,
+                "id": "eventCloseDate",
+                "validation": [],
+                "fieldId": "eventCloseDate"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {
+                    "type": "dateTimeWithoutTimezone",
+                    "defaultSetValue": "null"
+                },
+                "renderer": {
+                    "name": "date-time-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Event Start Date",
+                "type": "datetime",
+                "tags": [],
+                "placeholderText": null,
+                "id": "eventStartDate",
+                "validation": [],
+                "fieldId": "eventStartDate"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "text-input"
+                },
+                "helpText": "Such as Online & In-Person | Alexandria",
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Location",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "location",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Value is required.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "location"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {
+                    "fields": [
+                        {
+                            "renderer": {
+                                "name": "radio-buttons"
+                            },
+                            "predefinedValues": {
+                                "enabled": true,
+                                "values": [
+                                    {
+                                        "value": "Program",
+                                        "selected": true,
+                                        "label": "View Program"
+                                    }
+                                ]
+                            },
+                            "label": "Secondary Event CTA",
+                            "id": "secondaryEventCta",
+                            "type": "text",
+                            "validation": [],
+                            "fieldId": "secondaryEventCta"
+                        },
+                        {
+                            "renderer": {
+                                "name": "text-input"
+                            },
+                            "predefinedValues": {
+                                "enabled": false
+                            },
+                            "label": "Secondary CTA URL",
+                            "id": "secondaryCtaUrl",
+                            "type": "text",
+                            "validation": [
+                                {
+                                    "name": "pattern",
+                                    "message": "Please enter a valid URL.",
+                                    "settings": {
+                                        "flags": null,
+                                        "regex": null,
+                                        "preset": "url"
+                                    }
+                                }
+                            ],
+                            "fieldId": "secondaryCtaUrl"
+                        }
+                    ],
+                    "layout": [
+                        [
+                            "secondaryEventCta",
+                            "secondaryCtaUrl"
+                        ]
+                    ]
+                },
+                "renderer": {
+                    "name": "object"
+                },
+                "helpText": "Copy will appear as a text link. If no content exists, leave blank.",
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Secondary CTAs",
+                "type": "object",
+                "tags": [],
+                "placeholderText": null,
+                "id": "secondaryCta",
+                "validation": [],
+                "fieldId": "secondaryCta"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {
+                    "fields": [
+                        {
+                            "multipleValues": false,
+                            "listValidation": [],
+                            "settings": {},
+                            "renderer": {
+                                "name": "select-box"
+                            },
+                            "helpText": "Select Type",
+                            "predefinedValues": {
+                                "enabled": true,
+                                "values": [
+                                    {
+                                        "value": "Registration",
+                                        "selected": true,
+                                        "label": "Registration"
+                                    },
+                                    {
+                                        "value": "Abstracts",
+                                        "selected": true,
+                                        "label": "Abstract Submission"
+                                    },
+                                    {
+                                        "value": "Funding",
+                                        "selected": true,
+                                        "label": "Funding Opportunity"
+                                    }
+                                ]
+                            },
+                            "label": "Event Type",
+                            "type": "text",
+                            "tags": [],
+                            "placeholderText": null,
+                            "id": "eventType",
+                            "validation": [
+                                {
+                                    "name": "required",
+                                    "message": "Value is required.",
+                                    "settings": {}
+                                }
+                            ],
+                            "fieldId": "eventType"
+                        },
+                        {
+                            "renderer": {
+                                "name": "number-input"
+                            },
+                            "helpText": "Enter the meeting ID. It should be a three-digit number. If this is a funding opportunity, leave it blank.",
+                            "label": "Meeting ID",
+                            "id": "meetingId",
+                            "type": "number",
+                            "validation": [],
+                            "fieldId": "meetingId"
+                        }
+                    ],
+                    "layout": [
+                        [
+                            "eventType"
+                        ],
+                        [
+                            "meetingId"
+                        ]
+                    ]
+                },
+                "renderer": {
+                    "name": "object"
+                },
+                "helpText": "Feature on the ASCO Hub",
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Important Dates",
+                "type": "object",
+                "tags": [],
+                "placeholderText": null,
+                "id": "importantDates",
+                "validation": [],
+                "fieldId": "importantDates"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "text-input"
+                },
+                "helpText": "This should be the formal title of the meeting, event, or funding opportunity",
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Event Title",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "shortTitle",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Title is a required field.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "shortTitle"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {
+                    "type": "dateTimeWithoutTimezone",
+                    "defaultSetValue": "null"
+                },
+                "renderer": {
+                    "name": "date-time-input"
+                },
+                "helpText": "This deadline appears as the third item on the card. Example: Early Bird Deadline",
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Deadline Date",
+                "type": "datetime",
+                "tags": [],
+                "placeholderText": null,
+                "id": "deadlineDate",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Value is required.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "deadlineDate"
+            }
+        ],
+        "layout": [
+            [
+                "importantDates"
+            ],
+            [
+                "shortTitle"
+            ],
+            [
+                "location"
+            ],
+            [
+                "eventStartDate",
+                "eventCloseDate"
+            ],
+            [
+                "deadlineDate"
+            ],
+            [
+                "primaryCta"
+            ],
+            [
+                "secondaryCta"
+            ]
+        ],
+        "titleFieldId": "shortTitle"
+    },
+    {
+        "modelId": "newsRelease",
+        "name": "News Release, Statement",
+        "group": {
+            "id": "ascoHub",
+            "name": "ASCO Hub"
+        },
+        "icon": "far/newspaper",
+        "description": "To use for ASCO Press Releases and statements",
+        "singularApiName": "NewsRelease",
+        "pluralApiName": "NewsReleases",
+        "fields": [
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "text-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Title",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "title",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Title is a required field.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "title"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "long-text-text-area"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Description",
+                "type": "long-text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "description",
+                "validation": [],
+                "fieldId": "description"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "text-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Subtitle",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "subtitle",
+                "validation": [],
+                "fieldId": "subtitle"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "boolean-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Blog Post Associated",
+                "type": "boolean",
+                "tags": [],
+                "placeholderText": null,
+                "id": "blogPostAssociated",
+                "validation": [],
+                "fieldId": "blogPostAssociated"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {
+                    "type": "date"
+                },
+                "renderer": {
+                    "name": "date-time-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Date",
+                "type": "datetime",
+                "tags": [],
+                "placeholderText": null,
+                "id": "date",
+                "validation": [
+                    {
+                        "name": "dateGte",
+                        "message": "Date/time is earlier than the provided one.",
+                        "settings": {}
+                    },
+                    {
+                        "name": "required",
+                        "message": "Value is required.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "date"
+            },
+            {
+                "multipleValues": true,
+                "listValidation": [],
+                "settings": {
+                    "type": "date"
+                },
+                "renderer": {
+                    "name": "date-time-inputs"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Time",
+                "type": "datetime",
+                "tags": [],
+                "placeholderText": null,
+                "id": "time",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Value is required.",
+                        "settings": {}
+                    },
+                    {
+                        "name": "dateGte",
+                        "message": "Date/time is earlier than the provided one.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "time"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {
+                    "fields": [
+                        {
+                            "renderer": {
+                                "name": "text-input"
+                            },
+                            "label": "Name",
+                            "id": "name",
+                            "type": "text",
+                            "validation": [],
+                            "fieldId": "name"
+                        },
+                        {
+                            "multipleValues": false,
+                            "listValidation": [],
+                            "renderer": {
+                                "name": "number-input"
+                            },
+                            "predefinedValues": {
+                                "enabled": false
+                            },
+                            "label": "Phone",
+                            "id": "phone",
+                            "type": "number",
+                            "validation": [],
+                            "fieldId": "phone"
+                        },
+                        {
+                            "multipleValues": true,
+                            "listValidation": [],
+                            "renderer": {
+                                "name": "text-inputs"
+                            },
+                            "label": "Email",
+                            "id": "email",
+                            "type": "text",
+                            "validation": [
+                                {
+                                    "name": "pattern",
+                                    "message": "Please enter a valid e-mail.",
+                                    "settings": {
+                                        "flags": null,
+                                        "regex": null,
+                                        "preset": "email"
+                                    }
+                                }
+                            ],
+                            "fieldId": "email"
+                        }
+                    ],
+                    "layout": [
+                        [
+                            "name"
+                        ],
+                        [
+                            "phone"
+                        ],
+                        [
+                            "email"
+                        ]
+                    ]
+                },
+                "renderer": {
+                    "name": "object"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Contact",
+                "type": "object",
+                "tags": [],
+                "placeholderText": null,
+                "id": "contact",
+                "validation": [],
+                "fieldId": "contact"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [
+                    {
+                        "name": "dynamicZone",
+                        "message": "Value is required.",
+                        "settings": {}
+                    }
+                ],
+                "settings": {
+                    "templates": [
+                        {
+                            "layout": [
+                                [
+                                    "copy"
+                                ]
+                            ],
+                            "gqlTypeName": "Body",
+                            "name": "Body",
+                            "icon": "far/file-word",
+                            "description": "Body copy for releases.",
+                            "id": "body",
+                            "fields": [
+                                {
+                                    "renderer": {
+                                        "name": "lexical-text-input"
+                                    },
+                                    "label": "WYSIWYG",
+                                    "id": "copy",
+                                    "type": "rich-text",
+                                    "validation": [],
+                                    "fieldId": "copy"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "renderer": {
+                    "name": "dynamicZone"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Release Content",
+                "type": "dynamicZone",
+                "tags": [],
+                "placeholderText": null,
+                "id": "releaseContent",
+                "validation": [],
+                "fieldId": "releaseContent"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {
+                    "fields": [
+                        {
+                            "renderer": {
+                                "name": "boolean-input"
+                            },
+                            "label": "ASCO News",
+                            "id": "ascoNews",
+                            "type": "boolean",
+                            "validation": [],
+                            "fieldId": "ascoNews"
+                        },
+                        {
+                            "renderer": {
+                                "name": "boolean-input"
+                            },
+                            "label": "Association News",
+                            "id": "associationNews",
+                            "type": "boolean",
+                            "validation": [],
+                            "fieldId": "associationNews"
+                        },
+                        {
+                            "renderer": {
+                                "name": "boolean-input"
+                            },
+                            "label": "CancerLinQ News",
+                            "id": "cancerLinQNews",
+                            "type": "boolean",
+                            "validation": [],
+                            "fieldId": "cancerLinQNews"
+                        },
+                        {
+                            "renderer": {
+                                "name": "boolean-input"
+                            },
+                            "label": "Guidelines News",
+                            "id": "guidelinesNews",
+                            "type": "boolean",
+                            "validation": [],
+                            "fieldId": "guidelinesNews"
+                        },
+                        {
+                            "renderer": {
+                                "name": "boolean-input"
+                            },
+                            "label": "Journals News",
+                            "id": "journalsNews",
+                            "type": "boolean",
+                            "validation": [],
+                            "fieldId": "journalsNews"
+                        },
+                        {
+                            "renderer": {
+                                "name": "boolean-input"
+                            },
+                            "label": "Meetings News",
+                            "id": "meetingsNews",
+                            "type": "boolean",
+                            "validation": [],
+                            "fieldId": "meetingsNews"
+                        },
+                        {
+                            "renderer": {
+                                "name": "boolean-input"
+                            },
+                            "label": "Policy News",
+                            "id": "policyNews",
+                            "type": "boolean",
+                            "validation": [],
+                            "fieldId": "policyNews"
+                        },
+                        {
+                            "renderer": {
+                                "name": "boolean-input"
+                            },
+                            "label": "Quality Programs News",
+                            "id": "qualityProgramsNews",
+                            "type": "boolean",
+                            "validation": [],
+                            "fieldId": "qualityProgramsNews"
+                        },
+                        {
+                            "renderer": {
+                                "name": "boolean-input"
+                            },
+                            "label": "TAPUR Study News",
+                            "id": "tapurStudyNews",
+                            "type": "boolean",
+                            "validation": [],
+                            "fieldId": "tapurStudyNews"
+                        }
+                    ],
+                    "layout": [
+                        [
+                            "ascoNews"
+                        ],
+                        [
+                            "associationNews"
+                        ],
+                        [
+                            "cancerLinQNews"
+                        ],
+                        [
+                            "guidelinesNews"
+                        ],
+                        [
+                            "journalsNews"
+                        ],
+                        [
+                            "meetingsNews"
+                        ],
+                        [
+                            "policyNews"
+                        ],
+                        [
+                            "qualityProgramsNews"
+                        ],
+                        [
+                            "tapurStudyNews"
+                        ]
+                    ]
+                },
+                "renderer": {
+                    "name": "object"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Release Category",
+                "type": "object",
+                "tags": [],
+                "placeholderText": null,
+                "id": "releaseCategory",
+                "validation": [],
+                "fieldId": "releaseCategory"
+            }
+        ],
+        "layout": [
+            [
+                "title"
+            ],
+            [
+                "subtitle"
+            ],
+            [
+                "blogPostAssociated"
+            ],
+            [
+                "date"
+            ],
+            [
+                "time"
+            ],
+            [
+                "contact"
+            ],
+            [
+                "description"
+            ],
+            [
+                "releaseContent"
+            ],
+            [
+                "releaseCategory"
+            ]
+        ],
+        "titleFieldId": "title",
+        "descriptionFieldId": "description"
+    },
+    {
+        "modelId": "person",
+        "name": "Person",
+        "group": {
+            "id": "ascoHub",
+            "name": "ASCO Hub"
+        },
+        "icon": "fas/people-roof",
+        "description": "To use for ASCO leadership, Board, and Election.",
+        "singularApiName": "Person",
+        "pluralApiName": "Persons",
+        "fields": [
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "text-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Name",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "name",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Name is a required field.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "name"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {
+                    "imagesOnly": true
+                },
+                "renderer": {
+                    "name": "file-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Headshot",
+                "type": "file",
+                "tags": [],
+                "placeholderText": null,
+                "id": "image",
+                "validation": [],
+                "fieldId": "image"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "select-box"
+                },
+                "helpText": "Select one site where this page will appear, such as asco.org.",
+                "predefinedValues": {
+                    "enabled": true,
+                    "values": [
+                        {
+                            "value": "SOCIETY",
+                            "selected": true,
+                            "label": "ASCO.org"
+                        },
+                        {
+                            "value": "ASSN",
+                            "selected": true,
+                            "label": "ASCO Assn"
+                        },
+                        {
+                            "value": "AM",
+                            "selected": true,
+                            "label": "Annual Meeting"
+                        },
+                        {
+                            "value": "GI",
+                            "selected": true,
+                            "label": "GI Meeting"
+                        },
+                        {
+                            "value": "GU",
+                            "selected": true,
+                            "label": "GU Meeting"
+                        },
+                        {
+                            "value": "QCS",
+                            "selected": true,
+                            "label": "Quality"
+                        },
+                        {
+                            "value": "BKT",
+                            "selected": true,
+                            "label": "Breakthrough"
+                        },
+                        {
+                            "value": "BOA",
+                            "selected": true,
+                            "label": "Best of ASCO"
+                        }
+                    ]
+                },
+                "label": "Site Picker",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "sitePicker",
+                "validation": [],
+                "fieldId": "sitePicker"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "lexical-text-input"
+                },
+                "helpText": "Add speaker bio here.",
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Bio",
+                "type": "rich-text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "bio",
+                "validation": [],
+                "fieldId": "bio"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "text-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Board or Position Seat",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "seat",
+                "validation": [],
+                "fieldId": "seat"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "text-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "URL Path",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "urlPath",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Value is required.",
+                        "settings": {}
+                    },
+                    {
+                        "name": "unique",
+                        "message": "Value must be unique.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "urlPath"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "text-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "COI link",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "coiLink",
+                "validation": [
+                    {
+                        "name": "unique",
+                        "message": "Value must be unique.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "coiLink"
+            }
+        ],
+        "layout": [
+            [
+                "sitePicker"
+            ],
+            [
+                "image",
+                "name"
+            ],
+            [
+                "seat"
+            ],
+            [
+                "bio"
+            ],
+            [
+                "coiLink"
+            ],
+            [
+                "urlPath"
+            ]
+        ],
+        "titleFieldId": "name",
+        "imageFieldId": "image"
+    },
+    {
+        "modelId": "speaker",
+        "name": "Speaker",
+        "group": {
+            "id": "ascoHub",
+            "name": "ASCO Hub"
+        },
+        "icon": "fas/person",
+        "description": "To use for the speaker pages.",
+        "singularApiName": "Speaker",
+        "pluralApiName": "Speakers",
+        "fields": [
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "text-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Name",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "name",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Name is a required field.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "name"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {
+                    "imagesOnly": true
+                },
+                "renderer": {
+                    "name": "file-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Headshot",
+                "type": "file",
+                "tags": [],
+                "placeholderText": null,
+                "id": "image",
+                "validation": [],
+                "fieldId": "image"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "select-box"
+                },
+                "helpText": "Select one site where this page will appear, such as asco.org.",
+                "predefinedValues": {
+                    "enabled": true,
+                    "values": [
+                        {
+                            "value": "SOCIETY",
+                            "selected": true,
+                            "label": "ASCO.org"
+                        },
+                        {
+                            "value": "ASSN",
+                            "selected": true,
+                            "label": "ASCO Assn"
+                        },
+                        {
+                            "value": "AM",
+                            "selected": true,
+                            "label": "Annual Meeting"
+                        },
+                        {
+                            "value": "GI",
+                            "selected": true,
+                            "label": "GI Meeting"
+                        },
+                        {
+                            "value": "GU",
+                            "selected": true,
+                            "label": "GU Meeting"
+                        },
+                        {
+                            "value": "QCS",
+                            "selected": true,
+                            "label": "Quality"
+                        },
+                        {
+                            "value": "BKT",
+                            "selected": true,
+                            "label": "Breakthrough"
+                        },
+                        {
+                            "value": "BOA",
+                            "selected": true,
+                            "label": "Best of ASCO"
+                        }
+                    ]
+                },
+                "label": "Site Picker",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "sitePicker",
+                "validation": [],
+                "fieldId": "sitePicker"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "lexical-text-input"
+                },
+                "helpText": "Add speaker bio here.",
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Bio",
+                "type": "rich-text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "bio",
+                "validation": [],
+                "fieldId": "bio"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "text-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "Institution",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "institution",
+                "validation": [],
+                "fieldId": "institution"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "text-input"
+                },
+                "helpText": null,
+                "predefinedValues": {
+                    "enabled": false,
+                    "values": []
+                },
+                "label": "URL Path",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "urlPath",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Value is required.",
+                        "settings": {}
+                    },
+                    {
+                        "name": "unique",
+                        "message": "Value must be unique.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "urlPath"
+            }
+        ],
+        "layout": [
+            [
+                "sitePicker"
+            ],
+            [
+                "image",
+                "name"
+            ],
+            [
+                "institution"
+            ],
+            [
+                "bio"
+            ],
+            [
+                "urlPath"
+            ]
+        ],
+        "titleFieldId": "name",
+        "imageFieldId": "image"
+    }
+]
