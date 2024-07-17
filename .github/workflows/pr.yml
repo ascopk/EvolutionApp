@@ -1,0 +1,68 @@
+name: PR Pipeline
+
+on:
+  pull_request:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  prchecks:
+    name: PR Pipeline
+    runs-on: ubuntu-latest
+    concurrency: sandbox
+    environment: sandbox
+    env:
+      AWS_REGION: ${{ vars.AWS_REGION }}
+      OKTA_ISSUER: ${{ vars.OKTA_ISSUER }}
+      PULUMI_SECRETS_PROVIDER: passphrase
+      PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
+      WEBINY_PULUMI_BACKEND: s3://wby-sandbox-webiny-pulumi-state
+      WEBINY_OIDC_Role: arn:aws:iam::785726936497:role/service/webiny/sandbox-webiny-config-WebinyOIDCRole-h3n4BpoNIwSB
+      WCP_PROJECT_ENVIRONMENT_API_KEY: ${{ secrets.WCP_API_KEY }}
+      WEBINY_ADMIN_BRANDFOLDER_KEY: ${{ secrets.WEBINY_ADMIN_BRANDFOLDER_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: 'yarn'
+          
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: us-east-1
+          role-to-assume: ${{ env.WEBINY_OIDC_Role }}
+          role-session-name: AscoWebinyPRPipeline
+
+      - name: Install dependencies
+        run: yarn --immutable
+
+      - name: Check code formatting
+        run: yarn prettier:check
+
+      - name: ESLint
+        run: yarn eslint
+
+      - name: Build custom packages
+        run: yarn webiny workspaces run build --folder packages
+
+      - name: Run unit tests
+        run: yarn test:unit
+
+      - name: Webiny build
+        run: yarn webiny build core,api,admin,website --env=sandbox
+
+      # - name: Deploy
+      #   run: yarn webiny deploy --env=sandbox
+
+      # - name: Environment summary
+      #   run: yarn webiny info --env=sandbox >> $GITHUB_STEP_SUMMARY
+
+      # - name: Run integration tests
+      #   run: yarn test:integration
+
+      # - name: Run end-to-end tests
+      #   run: yarn test:e2e
