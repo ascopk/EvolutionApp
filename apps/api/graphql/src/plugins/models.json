@@ -176,6 +176,38 @@
                     }
                 ],
                 "fieldId": "summary"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "select-box"
+                },
+                "helpText": "Used to classify the entry on search & search filters",
+                "predefinedValues": {
+                    "enabled": true,
+                    "values": [
+                        {
+                            "value": "GENERAL_INFORMATION",
+                            "selected": true,
+                            "label": "General Information"
+                        }
+                    ]
+                },
+                "label": "ContentType",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "contentType",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Value is required.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "contentType"
             }
         ],
         "layout": [
@@ -193,6 +225,9 @@
             ],
             [
                 "summary"
+            ],
+            [
+                "contentType"
             ]
         ],
         "titleFieldId": "pageTitle",
@@ -249,6 +284,38 @@
                 "id": "fullBody",
                 "validation": [],
                 "fieldId": "fullBody"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "select-box"
+                },
+                "helpText": "Used to classify the entry on search & search filters",
+                "predefinedValues": {
+                    "enabled": true,
+                    "values": [
+                        {
+                            "value": "GENERAL_INFORMATION",
+                            "selected": true,
+                            "label": "General Information"
+                        }
+                    ]
+                },
+                "label": "ContentType",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "contentType",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Value is required.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "contentType"
             }
         ],
         "layout": [
@@ -257,6 +324,9 @@
             ],
             [
                 "fullBody"
+            ],
+            [
+                "contentType"
             ]
         ],
         "titleFieldId": "id"
@@ -701,6 +771,38 @@
                 "id": "releaseCategory",
                 "validation": [],
                 "fieldId": "releaseCategory"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "select-box"
+                },
+                "helpText": "Used to classify the entry on search & search filters",
+                "predefinedValues": {
+                    "enabled": true,
+                    "values": [
+                        {
+                            "value": "GENERAL_INFORMATION",
+                            "selected": true,
+                            "label": "General Information"
+                        }
+                    ]
+                },
+                "label": "ContentType",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "contentType",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Value is required.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "contentType"
             }
         ],
         "layout": [
@@ -730,6 +832,9 @@
             ],
             [
                 "releaseCategory"
+            ],
+            [
+                "contentType"
             ]
         ],
         "titleFieldId": "title",
@@ -1000,6 +1105,38 @@
                 "id": "fullBody",
                 "validation": [],
                 "fieldId": "fullBody"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "select-box"
+                },
+                "helpText": "Used to classify the entry on search & search filters",
+                "predefinedValues": {
+                    "enabled": true,
+                    "values": [
+                        {
+                            "value": "GENERAL_INFORMATION",
+                            "selected": true,
+                            "label": "General Information"
+                        }
+                    ]
+                },
+                "label": "ContentType",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "contentType",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Value is required.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "contentType"
             }
         ],
         "layout": [
@@ -1023,6 +1160,9 @@
             ],
             [
                 "urlPath"
+            ],
+            [
+                "contentType"
             ]
         ],
         "titleFieldId": "Pagetitle"
@@ -1156,6 +1296,38 @@
                 "id": "eventDetails",
                 "validation": [],
                 "fieldId": "eventDetails"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "select-box"
+                },
+                "helpText": "Used to classify the entry on search & search filters",
+                "predefinedValues": {
+                    "enabled": true,
+                    "values": [
+                        {
+                            "value": "GENERAL_INFORMATION",
+                            "selected": true,
+                            "label": "General Information"
+                        }
+                    ]
+                },
+                "label": "ContentType",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "contentType",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Value is required.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "contentType"
             }
         ],
         "layout": [
@@ -1171,6 +1343,9 @@
             ],
             [
                 "eventDetails"
+            ],
+            [
+                "contentType"
             ]
         ],
         "titleFieldId": "location"
@@ -1549,6 +1724,38 @@
                     }
                 ],
                 "fieldId": "deadlineDate"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "select-box"
+                },
+                "helpText": "Used to classify the entry on search & search filters",
+                "predefinedValues": {
+                    "enabled": true,
+                    "values": [
+                        {
+                            "value": "GENERAL_INFORMATION",
+                            "selected": true,
+                            "label": "General Information"
+                        }
+                    ]
+                },
+                "label": "ContentType",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "contentType",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Value is required.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "contentType"
             }
         ],
         "layout": [
@@ -1573,6 +1780,9 @@
             ],
             [
                 "secondaryCta"
+            ],
+            [
+                "contentType"
             ]
         ],
         "titleFieldId": "shortTitle"
@@ -2017,6 +2227,38 @@
                 "id": "releaseCategory",
                 "validation": [],
                 "fieldId": "releaseCategory"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "select-box"
+                },
+                "helpText": "Used to classify the entry on search & search filters",
+                "predefinedValues": {
+                    "enabled": true,
+                    "values": [
+                        {
+                            "value": "GENERAL_INFORMATION",
+                            "selected": true,
+                            "label": "General Information"
+                        }
+                    ]
+                },
+                "label": "ContentType",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "contentType",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Value is required.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "contentType"
             }
         ],
         "layout": [
@@ -2046,6 +2288,9 @@
             ],
             [
                 "releaseCategory"
+            ],
+            [
+                "contentType"
             ]
         ],
         "titleFieldId": "title",
@@ -2268,6 +2513,38 @@
                     }
                 ],
                 "fieldId": "coiLink"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "select-box"
+                },
+                "helpText": "Used to classify the entry on search & search filters",
+                "predefinedValues": {
+                    "enabled": true,
+                    "values": [
+                        {
+                            "value": "GENERAL_INFORMATION",
+                            "selected": true,
+                            "label": "General Information"
+                        }
+                    ]
+                },
+                "label": "ContentType",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "contentType",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Value is required.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "contentType"
             }
         ],
         "layout": [
@@ -2289,6 +2566,9 @@
             ],
             [
                 "urlPath"
+            ],
+            [
+                "contentType"
             ]
         ],
         "titleFieldId": "name",
@@ -2485,6 +2765,38 @@
                     }
                 ],
                 "fieldId": "urlPath"
+            },
+            {
+                "multipleValues": false,
+                "listValidation": [],
+                "settings": {},
+                "renderer": {
+                    "name": "select-box"
+                },
+                "helpText": "Used to classify the entry on search & search filters",
+                "predefinedValues": {
+                    "enabled": true,
+                    "values": [
+                        {
+                            "value": "GENERAL_INFORMATION",
+                            "selected": true,
+                            "label": "General Information"
+                        }
+                    ]
+                },
+                "label": "ContentType",
+                "type": "text",
+                "tags": [],
+                "placeholderText": null,
+                "id": "contentType",
+                "validation": [
+                    {
+                        "name": "required",
+                        "message": "Value is required.",
+                        "settings": {}
+                    }
+                ],
+                "fieldId": "contentType"
             }
         ],
         "layout": [
@@ -2503,6 +2815,9 @@
             ],
             [
                 "urlPath"
+            ],
+            [
+                "contentType"
             ]
         ],
         "titleFieldId": "name",
