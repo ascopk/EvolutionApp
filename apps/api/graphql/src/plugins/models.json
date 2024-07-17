@@ -447,7 +447,8 @@
                                 "name": "number-input"
                             },
                             "predefinedValues": {
-                                "enabled": false
+                                "enabled": false,
+                                "values": []
                             },
                             "label": "Phone",
                             "id": "phone",
@@ -1367,7 +1368,8 @@
                                 "name": "text-input"
                             },
                             "predefinedValues": {
-                                "enabled": false
+                                "enabled": false,
+                                "values": []
                             },
                             "label": "Secondary CTA URL",
                             "id": "secondaryCtaUrl",
@@ -1761,7 +1763,8 @@
                                 "name": "number-input"
                             },
                             "predefinedValues": {
-                                "enabled": false
+                                "enabled": false,
+                                "values": []
                             },
                             "label": "Phone",
                             "id": "phone",
