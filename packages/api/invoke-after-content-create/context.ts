@@ -1,48 +1,28 @@
 import { ContextPlugin } from "@webiny/api/plugins/ContextPlugin";
 import { EventBridgeClient, PutEventsCommand } from "@webiny/aws-sdk/client-eventbridge";
 import { ContentCreateContext } from "./types";
+import { awsconfig } from 'awsconfig';
 
 interface Entry {
     values: Record<string, unknown>;
     [key: string]: unknown;
 }
 
-/**
- * Define EventBridge Event Bus ARNs based on environment
- */
-const eventBusArns: Record<'dev' | 'stage' | 'prod' | 'default', string> = {
-    dev: "arn:aws:events:us-east-1:477761241525:event-bus/dev-dp-core-eventBus",
-    stage: "arn:aws:events:us-east-1:953078433933:event-bus/stage-dp-core-eventBus",
-    prod: "arn:aws:events:us-east-1:121566555105:event-bus/prod-dp-core-eventBus",
-    default: ''
-};
-
-/**
- * Get the Event Bus ARN based on your environment.
- * This might be dynamically set in your application configuration.
- */
-const environment: 'dev' | 'stage' | 'prod' = (process.env.NODE_ENV as 'dev' | 'stage' | 'prod') || 'default';
-
-/**
- * Ensure environment is valid
- */
-if (!['dev', 'stage', 'prod'].includes(environment)) {
-    throw new Error(`Invalid NODE_ENV value: ${environment}. Must be 'dev', 'stage', or 'prod'.`);
-}
-
-const eventBusArn = eventBusArns[environment];
-
-export const createContext = () => {
+export const createContext = (env: any) => {
     return new ContextPlugin<ContentCreateContext>(async context => {
+        console.log(JSON.stringify(env))
+        const eventBusArn = awsconfig[env].eventbus
         /**
          * Subscribe to onEntryAfterCreate to send an event to EventBridge
          */
         context.cms.onEntryAfterCreate.subscribe(async ({ model, entry }) => {
             try {
+                console.log(JSON.stringify(env))
                 console.log("Model from cms context", model);
                 console.log("Entry from cms context", entry);
+
                 // Only proceed if environment is 'dev', 'stage', or 'prod'
-                if (['dev', 'stage', 'prod'].includes(environment)) {
+                if (['dev', 'stage', 'prod'].includes(env)) {
                     const flattenedData = flattenEntry(entry); // Custom function to flatten the entry
 
                     // Construct event
