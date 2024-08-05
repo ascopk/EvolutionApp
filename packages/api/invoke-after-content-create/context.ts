@@ -8,9 +8,10 @@ interface Entry {
     [key: string]: unknown;
 }
 
-export const createContext = (env: any) => {
+export const createContext = () => {
     return new ContextPlugin<ContentCreateContext>(async context => {
-        console.log(JSON.stringify(env))
+        console.log("ENV: ",process.env.WEBINY_ENV);
+        const env = process.env.WEBINY_ENV as string;
         const eventBusArn = awsconfig[env].eventbus
         /**
          * Subscribe to onEntryAfterCreate to send an event to EventBridge
