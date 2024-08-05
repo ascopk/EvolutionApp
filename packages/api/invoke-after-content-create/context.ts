@@ -10,20 +10,19 @@ interface Entry {
 
 export const createContext = () => {
     return new ContextPlugin<ContentCreateContext>(async context => {
-        console.log("ENV: ",process.env.WEBINY_ENV);
         const env = process.env.WEBINY_ENV as string;
-        const eventBusArn = awsconfig[env].eventbus
+        console.log("ENV: ",process.env.WEBINY_ENV);
         /**
          * Subscribe to onEntryAfterCreate to send an event to EventBridge
          */
         context.cms.onEntryAfterCreate.subscribe(async ({ model, entry }) => {
             try {
-                console.log(JSON.stringify(env))
-                console.log("Model from cms context", model);
-                console.log("Entry from cms context", entry);
-
                 // Only proceed if environment is 'dev', 'stage', or 'prod'
                 if (['dev', 'stage', 'prod'].includes(env)) {
+                    console.log(JSON.stringify(env))
+                    console.log("Model from cms context", model);
+                    console.log("Entry from cms context", entry);
+                    const eventBusArn = awsconfig[env].eventbus
                     const flattenedData = flattenEntry(entry); // Custom function to flatten the entry
 
                     // Construct event
@@ -51,7 +50,7 @@ export const createContext = () => {
                     console.log("Event sent to EventBridge", response);
                     return response;
                 } else {
-                    console.log("Environment is 'dev', 'stage', or 'prod'; skipping EventBridge call.");
+                    console.log("Environment can only be 'dev', 'stage', or 'prod'; skipping EventBridge call.");
                 }
             } catch (e) {
                 throw new Error("ContentAfterCreate::Error sending event to EventBridge: " + e);

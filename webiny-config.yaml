@@ -267,7 +267,6 @@ Resources:
             Resource:
               - arn:aws:events:*:*:event-bus/wby-*
               - arn:aws:events:*:*:rule/wby-*
-              - arn:aws:events:*:*:event-bus/*-dp-core-eventBus
 
           # AWS Identity and Access Management (IAM)
           - Effect: Allow

@@ -1,3 +1,4 @@
+import * as aws from "@pulumi/aws";
 import { createApiApp } from "@webiny/serverless-cms-aws/enterprise";
 import { awsconfig, ascoEnvs, ascoProdEnvs } from 'awsconfig';
 
@@ -23,6 +24,23 @@ export default createApiApp({
     pulumi({ resources, params }) {
         const { cloudfront } = resources;
         const { env } = params.run
+
+        // Add permissions to PutEvents in dp-core-eventBus
+        const putEventsPolicy = new aws.iam.Policy("wby-policy-putevent", {
+        description: "This policy grants PutEvents permission on the dp eventBus",
+        policy: {
+            Version: "2012-10-17",
+            Statement: [{
+                Effect: "Allow",
+                Action: ["events:PutEvents"],
+                Resource: ["arn:aws:events:*:*:event-bus/*-dp-core-eventBus"]
+            }]
+        }});
+
+        new aws.iam.RolePolicyAttachment("graphql-role-event-putevents-attachment", {
+            role: resources.graphql.role.output.name,
+            policyArn: putEventsPolicy.arn
+        });
 
         cloudfront.config.comment(`${env} webiny api`)
 
