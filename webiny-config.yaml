@@ -20,6 +20,7 @@ Parameters:
 Resources:
   WebinyStateBucket:
     DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
     Type: AWS::S3::Bucket
     Properties:
       BucketName: !Sub 'wby-${Environment}-webiny-pulumi-state'
