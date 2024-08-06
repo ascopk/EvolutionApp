@@ -87,12 +87,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@asco/invoke-after-content-create@workspace:packages/api/invoke-after-content-create":
-  version: 0.0.0-use.local
-  resolution: "@asco/invoke-after-content-create@workspace:packages/api/invoke-after-content-create"
-  languageName: unknown
-  linkType: soft
-
 "@asco/invoke-after-content-delete@workspace:packages/api/invoke-after-content-delete":
   version: 0.0.0-use.local
   resolution: "@asco/invoke-after-content-delete@workspace:packages/api/invoke-after-content-delete"

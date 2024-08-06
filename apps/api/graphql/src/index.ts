@@ -35,7 +35,6 @@ import tenantManager from "@webiny/api-tenant-manager";
 import { createAuditLogs } from "@webiny/api-audit-logs";
 import { createBackgroundTasks } from "@webiny/api-background-tasks-os";
 import { createInvokeLambdaAfterPublish } from "@asco/invoke-after-content-publish";
-import { createInvokeLambdaAfterCreate } from "@asco/invoke-after-content-create";
 import { createInvokeLambdaAfterDelete } from "@asco/invoke-after-content-delete";
 import { createInvokeLambdaAfterUpdate } from "@asco/invoke-after-content-update";
 import { createInvokeLambdaAfterUnpublish } from "@asco/invoke-after-content-unpublish";
@@ -122,7 +121,6 @@ export const handler = createHandler({
         createAuditLogs(),
         scaffoldsPlugins(),
         createInvokeLambdaAfterPublish(),
-        createInvokeLambdaAfterCreate(),
         createInvokeLambdaAfterDelete(),
         createInvokeLambdaAfterUpdate(),
         createInvokeLambdaAfterUnpublish(),

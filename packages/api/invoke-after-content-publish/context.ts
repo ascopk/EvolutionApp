@@ -1,40 +1,75 @@
 import { ContextPlugin } from "@webiny/api/plugins/ContextPlugin";
-// import { LambdaClient, InvokeCommand } from "@webiny/aws-sdk/client-lambda";
+import { EventBridgeClient, PutEventsCommand } from "@webiny/aws-sdk/client-eventbridge";
 import { ContentPublishContext } from "./types";
+import { ascoEnvs, awsconfig } from 'awsconfig';
 
-/**
- * This is hardcoded arn for function, have to figure out a way to handle this dynamically
- */
-// const lambdaArn = "arn:aws:lambda:us-east-1:381492018416:function:webiny-test";
+interface Entry {
+    values: Record<string, unknown>;
+    [key: string]: unknown;
+}
 
 export const createContext = () => {
-    return new ContextPlugin<ContentPublishContext>(async context =>{
+    return new ContextPlugin<ContentPublishContext>(async context => {
+        const env = process.env.WEBINY_ENV as string;
+        console.log("ENV: ",process.env.WEBINY_ENV);
         /**
-         * Subscribe to onEntryAfterPublish to invoke lambda function
+         * Subscribe to onEntryAfterDelete to invoke lambda function
          */
         context.cms.onEntryAfterPublish.subscribe(async ({ model, entry }) => {
             try {
-                // Add required lambda function here
-                // const lambdaClient = new LambdaClient({ region: process.env.AWS_REGION })
-                // const response = await lambdaClient.send(
-                //     new InvokeCommand({
-                //         FunctionName: lambdaArn,
-                //         InvocationType: "RequestResponse",
-                //         Payload:JSON.stringify({
-                //           model,
-                //           entry
-                //         })
-                //     })
-                // )
-                console.log(model,entry);
-                // /**
-                //  * Extract response from lambda, not sure what to do with it as of now
-                //  */
-                // const decoder = new TextDecoder('utf-8');
-                // return JSON.parse(decoder.decode(response.Payload));
-            }catch(e){
-                throw new Error("ContentAfterPublish::Error invoking lambda function: " + e);
+                // Only proceed if environment is 'dev', 'stage', or 'prod'
+                if (ascoEnvs.includes(env)) {
+                    console.log(JSON.stringify(env))
+                    console.log("Model from cms context", model);
+                    console.log("Entry from cms context", entry);
+                    const eventBusArn = awsconfig[env].eventbus;
+                    const flattenedData = flattenEntry(entry); // Custom function to flatten the entry
+
+                    // Construct event
+                    const event = {
+                        Entries: [
+                            {
+                                Source: "asco.webiny",
+                                DetailType: "webinyStore",
+                                Detail: JSON.stringify({
+                                    eventType: "SINGLE",
+                                    modType: "MODIFY",
+                                    data: flattenedData
+                                }),
+                                EventBusName: eventBusArn
+                            }
+                        ]
+                    };
+
+                    // Create an EventBridge client
+                    const eventBridgeClient = new EventBridgeClient({ region: process.env.AWS_REGION });
+
+                    // Send the event to EventBridge
+                    const response = await eventBridgeClient.send(new PutEventsCommand(event));
+
+                    console.log("Event sent to EventBridge", response);
+                    return response;
+                } else {
+                    console.log("Environment can only be 'dev', 'stage', or 'prod'; skipping EventBridge call.");
+                }
+            } catch (e) {
+                throw new Error("ContentPublishContext::Error sending event to EventBridge: " + e);
             }
-        })
-    }
-);}
+        });
+    });
+};
+
+/**
+ * Flatten the entry object
+ * Assumes `entry` is an object with `values` containing nested fields.
+ */
+const flattenEntry = (entry: Entry) => {
+    // Extract values and other fields from entry
+    const { values, ...otherFields } = entry;
+
+    // Flatten `values` and merge with other fields
+    return {
+        ...values,
+        ...otherFields
+    };
+};
