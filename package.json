@@ -3,17 +3,19 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
-		"@webiny/aws-layers": "5.39.6",
-		"@webiny/cli": "5.39.6",
-		"@webiny/cli-plugin-deploy-pulumi": "5.39.6",
-		"@webiny/cli-plugin-scaffold": "5.39.6",
-		"@webiny/cli-plugin-scaffold-admin-app-module": "5.39.6",
-		"@webiny/cli-plugin-scaffold-ci": "5.39.6",
-		"@webiny/cli-plugin-scaffold-graphql-service": "5.39.6",
-		"@webiny/cli-plugin-workspaces": "5.39.6",
-		"@webiny/cwp-template-aws": "5.39.6",
-		"@webiny/project-utils": "5.39.6",
-		"@webiny/serverless-cms-aws": "5.39.6",
+		"@webiny/aws-layers": "5.40.4",
+		"@webiny/cli": "5.40.4",
+		"@webiny/cli-plugin-deploy-pulumi": "5.40.4",
+		"@webiny/cli-plugin-scaffold": "5.40.4",
+		"@webiny/cli-plugin-scaffold-admin-app-module": "5.40.4",
+		"@webiny/cli-plugin-scaffold-ci": "5.40.4",
+		"@webiny/cli-plugin-scaffold-extensions": "5.40.4",
+		"@webiny/cli-plugin-scaffold-graphql-service": "5.40.4",
+		"@webiny/cli-plugin-scaffold-workspaces": "5.40.4",
+		"@webiny/cli-plugin-workspaces": "5.40.4",
+		"@webiny/cwp-template-aws": "5.40.4",
+		"@webiny/project-utils": "5.40.4",
+		"@webiny/serverless-cms-aws": "5.40.4",
 		"awsconfig": "file:libs/awsconfig"
 	},
 	"keywords": [
@@ -30,8 +32,8 @@
 		"@babel/preset-typescript": "7.22.5",
 		"@types/jest": "24.9.1",
 		"@types/node": "18.18.3",
-		"@types/react": "17.0.39",
-		"@types/react-dom": "17.0.11",
+		"@types/react": "18.2.79",
+		"@types/react-dom": "18.2.25",
 		"@typescript-eslint/eslint-plugin": "5.51.0",
 		"@typescript-eslint/parser": "5.51.0",
 		"babel-plugin-dynamic-import-node": "2.3.3",
@@ -58,11 +60,11 @@
 		"packages": [
 			"apps/admin",
 			"apps/website",
-			"apps/theme",
 			"apps/api/graphql",
 			"apps/api/headlessCMS",
 			"libs/*",
-			"packages/**/*"
+			"packages/**/*",
+			"extensions/theme"
 		]
 	},
 	"scripts": {
@@ -82,10 +84,10 @@
 	},
 	"resolutions": {
 		"@emotion/react": "11.10.8",
-		"@types/react": "17.0.39",
-		"react": "17.0.2",
+		"@types/react": "18.2.79",
+		"react": "18.2.0",
 		"typescript": "4.7.4",
-		"react-dom": "17.0.2",
-		"codex-tooltip": "1.0.2"
+		"react-dom": "18.2.0",
+		"@types/react-dom": "18.2.25"
 	}
 }

@@ -11,6 +11,10 @@ import { FormBuilderContext } from "@webiny/api-form-builder/types";
 import { CmsContext } from "@webiny/api-headless-cms/types";
 import { AcoContext } from "@webiny/api-aco/types";
 import { PbAcoContext } from "@webiny/api-page-builder-aco/types";
+import { Context as WebsocketsContext } from "@webiny/api-websockets/types";
+import { HcmsAcoContext } from "@webiny/api-headless-cms-aco/types";
+import { HcmsTasksContext } from "@webiny/api-headless-cms-tasks/types";
+import { Context as RecordLockingContext } from "@webiny/api-record-locking/types";
 
 // When working with the `context` object (for example while defining a new GraphQL resolver function),
 // you can import this interface and assign it to it. This will give you full autocomplete functionality
@@ -31,4 +35,8 @@ export interface Context
         FormBuilderContext,
         AcoContext,
         PbAcoContext,
-        CmsContext {}
+        CmsContext,
+        WebsocketsContext,
+        HcmsAcoContext,
+        HcmsTasksContext,
+        RecordLockingContext {}

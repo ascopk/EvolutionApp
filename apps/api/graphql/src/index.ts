@@ -26,7 +26,11 @@ import logsPlugins from "@webiny/handler-logs";
 import fileManagerS3, { createAssetDelivery } from "@webiny/api-file-manager-s3";
 import { createFormBuilder } from "@webiny/api-form-builder";
 import { createFormBuilderStorageOperations } from "@webiny/api-form-builder-so-ddb-es";
+import { createWebsockets } from "@webiny/api-websockets";
 import { createHeadlessCmsContext, createHeadlessCmsGraphQL } from "@webiny/api-headless-cms";
+import { createRecordLocking } from "@webiny/api-record-locking";
+import { createHcmsTasks } from "@webiny/api-headless-cms-tasks";
+import { createAcoHcmsContext } from "@webiny/api-headless-cms-aco";
 import { createStorageOperations as createHeadlessCmsStorageOperations } from "@webiny/api-headless-cms-ddb-es";
 import { createAco } from "@webiny/api-aco";
 import { createAcoPageBuilderContext } from "@webiny/api-page-builder-aco";
@@ -48,6 +52,7 @@ import { createStorageOperations as createApwSaStorageOperations } from "@webiny
 
 // Imports plugins created via scaffolding utilities.
 import scaffoldsPlugins from "./plugins/scaffolds";
+import { extensions } from "./extensions";
 
 const debug = process.env.DEBUG === "true";
 
@@ -73,6 +78,7 @@ export const handler = createHandler({
         tenantManager(),
         i18nPlugins(),
         i18nDynamoDbStorageOperations(),
+        createWebsockets(),
         createHeadlessCmsContext({
             storageOperations: createHeadlessCmsStorageOperations({
                 documentClient,
@@ -81,6 +87,7 @@ export const handler = createHandler({
             })
         }),
         createHeadlessCmsGraphQL(),
+        createRecordLocking(),
         createBackgroundTasks(),
         createFileManagerContext({
             storageOperations: createFileManagerStorageOperations({
@@ -119,11 +126,14 @@ export const handler = createHandler({
         createAco(),
         createAcoPageBuilderContext(),
         createAuditLogs(),
+        createAcoHcmsContext(),
+        createHcmsTasks(),
         scaffoldsPlugins(),
+        extensions(),
         createInvokeLambdaAfterPublish(),
         createInvokeLambdaAfterDelete(),
         createInvokeLambdaAfterUpdate(),
-        createInvokeLambdaAfterUnpublish(),
+        createInvokeLambdaAfterUnpublish()
         //...ascoModelsAndGroups
     ],
     debug
