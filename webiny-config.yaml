@@ -58,14 +58,6 @@ Resources:
                 token.actions.githubusercontent.com:aud: sts.amazonaws.com
               StringLike:
                 token.actions.githubusercontent.com:sub: !Sub repo:ascogit/ASCO.webiny:*
-          - Effect: Allow
-            Action: sts:AssumeRole
-            Principal: 
-              AWS:
-                - arn:aws:sts::785726936497:assumed-role/AWSReservedSSO_AWS_Role-DevOps_2a67421407f26f1e/JOuser@asco.org
-                - arn:aws:sts::477761241525:assumed-role/AWSReservedSSO_AWS_Role-DevOps_9c073ccba6a6a016/JOuser@asco.org
-                - arn:aws:sts::953078433933:assumed-role/AWSReservedSSO_AWS_Role-DevOps_a7ae15f59d12812b/JOuser@asco.org
-                - arn:aws:sts::121566555105:assumed-role/AWSReservedSSO_AWS_Role-DevOps_ada44a4f0744a271/JOuser@asco.org
       Path: /service/webiny/
     
   CreateWebinyPolicy:
@@ -223,6 +215,7 @@ Resources:
             Action:
               - dynamodb:CreateTable
               - dynamodb:DeleteTable
+              - dynamodb:UpdateTable
               - dynamodb:DescribeTable
               - dynamodb:DescribeContinuousBackups
               - dynamodb:DescribeTimeToLive
