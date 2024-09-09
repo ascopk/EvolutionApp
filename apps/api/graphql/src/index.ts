@@ -42,6 +42,7 @@ import { createInvokeLambdaAfterPublish } from "@asco/invoke-after-content-publi
 import { createInvokeLambdaAfterDelete } from "@asco/invoke-after-content-delete";
 import { createInvokeLambdaAfterUpdate } from "@asco/invoke-after-content-update";
 import { createInvokeLambdaAfterUnpublish } from "@asco/invoke-after-content-unpublish";
+import tinyMCEFieldPlugin from "./fields/tinyMCE/tinyMCEFieldPlugin";
 //import ascoModelsAndGroups from "./plugins/models";
 
 /**
@@ -129,6 +130,7 @@ export const handler = createHandler({
         createAcoHcmsContext(),
         createHcmsTasks(),
         scaffoldsPlugins(),
+        tinyMCEFieldPlugin,
         extensions(),
         createInvokeLambdaAfterPublish(),
         createInvokeLambdaAfterDelete(),

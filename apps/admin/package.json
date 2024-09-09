@@ -8,6 +8,7 @@
 		"@editorjs/list": "1.8.0",
 		"@editorjs/quote": "2.5.0",
 		"@editorjs/underline": "1.1.0",
+		"@tinymce/tinymce-react": "^5.1.1",
 		"@types/react": "18.2.79",
 		"@webiny/app-admin": "5.40.5",
 		"@webiny/app-admin-okta": "5.40.5",
