@@ -12,8 +12,8 @@ export default createAdminApp({
         cloudfront.config.comment(`${env} webiny admin`)
 
         if (ascoEnvs.includes(env)){
-            cloudfront.config.aliases([`${env}-webiny-admin.asco.org`])
-            if (env == "prod"){ cloudfront.config.aliases([`webiny-admin.asco.org`]) }
+            cloudfront.config.aliases([`cms-admin.${env}.asco.org`])
+            if (env == "prod"){ cloudfront.config.aliases([`cms-admin.prod.asco.org`]) }
             cloudfront.config.webAclId(awsconfig[env].waf)
             cloudfront.config.viewerCertificate(config => {
                 return { ...config, 

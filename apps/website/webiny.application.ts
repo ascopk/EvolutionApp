@@ -32,12 +32,12 @@ export default createWebsiteApp({
             if (ascoEnvs.includes(env)){
                 switch(each.name){
                     case "preview":
-                        each.deploy.cloudfront.config.aliases([`${env}-webiny-preview.asco.org`])
-                        if (env == "prod"){ each.deploy.cloudfront.config.aliases([`webiny-preview.asco.org`]) }
+                        each.deploy.cloudfront.config.aliases([`cms-preview.${env}.asco.org`])
+                        if (env == "prod"){ each.deploy.cloudfront.config.aliases([`cms-preview.prod.asco.org`]) }
                         break;
                     case "delivery":
-                        each.deploy.cloudfront.config.aliases([`${env}-webiny.asco.org`])
-                        if (env == "prod"){ each.deploy.cloudfront.config.aliases([`webiny.asco.org`]) }
+                        each.deploy.cloudfront.config.aliases([`cms.${env}.asco.org`])
+                        if (env == "prod"){ each.deploy.cloudfront.config.aliases([`cms.prod.asco.org`]) }
                         break;
                 }
                 each.deploy.cloudfront.config.webAclId(awsconfig[env].waf)

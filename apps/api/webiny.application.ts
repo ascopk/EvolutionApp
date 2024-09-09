@@ -45,8 +45,8 @@ export default createApiApp({
         cloudfront.config.comment(`${env} webiny api`)
 
         if (ascoEnvs.includes(env)) {
-            cloudfront.config.aliases([`${env}-webiny-api.asco.org`])
-            if (env == "prod"){ cloudfront.config.aliases([`webiny-api.asco.org`]) }
+            cloudfront.config.aliases([`cms-api.${env}.asco.org`])
+            if (env == "prod"){ cloudfront.config.aliases([`cms-api.prod.asco.org`]) }
             cloudfront.config.webAclId(awsconfig[env].waf)
             cloudfront.config.viewerCertificate(config => {
                 return { ...config, 
