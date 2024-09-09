@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, {useRef, useCallback} from "react";
 import { Editor } from '@tinymce/tinymce-react';
 import {Editor as TinyMCEEditor} from 'tinymce'
 import { CmsModelFieldRendererPlugin } from "@webiny/app-headless-cms/types";
@@ -22,38 +22,42 @@ export default (): CmsModelFieldRendererPlugin => ({
       return (
         <Bind>
           {bind => {
+
+            const onChangeWithCallback = useCallback((htmlString: string) => {
+              if (!htmlString || htmlString == "") {
+                return;
+              }
+              bind.onChange(htmlString)
+            }, [bind.onChange])
+
             return (
               <>
                 <Label>{field.label}</Label>
                 <Editor
-                    {...bind}
-                    initialValue={bind.value}
-                    onInit={(_, editor) => editorRef.current = editor}
-                    tinymceScriptSrc={tinymce_script}
-                    licenseKey="gpl"
-                    init={{
-                        height: 500,
-                        menubar: true,
-                        setup: (editor) => {
-                          editor.on("change", () => {
-                            bind.onChange(editorRef.current?.getContent() || '');
-                          })
-                        },
-                        plugins: [
-                            'advlist', 'autolink', 'lists', 'link', 'image', 'charmap',
-                            'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
-                            'insertdatetime', 'media', 'table', 'preview', 'help', 'wordcount'
-                        ],
-                        toolbar: 'undo redo | blocks | ' +
-                            'bold italic forecolor | alignleft aligncenter ' +
-                            'alignright alignjustify | bullist numlist outdent indent | ' +
-                            'removeformat | help',
-                        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
-                    }}
+                  tinymceScriptSrc={tinymce_script}
+                  licenseKey="gpl"
+                  value={bind.value ? bind.value : ''}
+                  onInit={(_, editor) => editorRef.current = editor}
+                  onEditorChange={(editorValue) => onChangeWithCallback(editorValue)}
+                  init={{
+                    height: 500,
+                    menubar: true,
+                    plugins: [
+                      'advlist', 'autolink', 'lists', 'link', 'image', 'charmap',
+                      'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                      'insertdatetime', 'media', 'table', 'preview', 'help', 'wordcount'
+                    ],
+                    toolbar: 'undo redo | blocks | ' +
+                      'bold italic forecolor | alignleft aligncenter ' +
+                      'alignright alignjustify | bullist numlist outdent indent | ' +
+                      'removeformat | help',
+                    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+                  }}
                 />
                 <FormElementMessage>{field.helpText}</FormElementMessage>
               </>
-          )}}
+            )}
+          }
         </Bind>
       );
     }
