@@ -16,7 +16,7 @@ type awsResourceArns = {
   
   const awsconfig: awsResourceArns = {
     "sandbox":{
-      "cert": "arn:aws:acm:us-east-1:785726936497:certificate/7b9445fa-4876-42ad-8f7c-d41012bce198",
+      "cert": "arn:aws:acm:us-east-1:785726936497:certificate/4e8530cb-b55f-437f-8c7c-1e6c6d064bbe",
       "tls": tlsVersion,
       "subnets": ["subnet-0a418b20378c2543e"],
       "securitygroups": ["sg-06a55a730b1bfeeb9"],
@@ -24,7 +24,7 @@ type awsResourceArns = {
       "eventbus": ""
     },
     "dev": {
-      "cert": "arn:aws:acm:us-east-1:477761241525:certificate/bc0bc78f-0ad0-4778-abc0-b924f4437d59", //asco.org
+      "cert": "arn:aws:acm:us-east-1:477761241525:certificate/62607276-e569-41f6-a493-0715da8c4683", //dev.asco.org
       "tls": tlsVersion,
       "subnets": ["subnet-0a418b20378c2543e"], //dev-sharedvpc-private-AZ1
       "securitygroups": ["sg-0bae4e564dc6b2f97"], //dev-hub-LoadBalancerSG
@@ -32,7 +32,7 @@ type awsResourceArns = {
       "eventbus": "arn:aws:events:us-east-1:477761241525:event-bus/dev-dp-core-eventBus"
     },
     "stage": {
-      "cert": "arn:aws:acm:us-east-1:953078433933:certificate/5764fabf-e4dd-4660-8a45-7d6df692cf16", //asco.org
+      "cert": "arn:aws:acm:us-east-1:953078433933:certificate/13cdaf0c-3bd8-406c-afeb-f11e25c03592", //stage.asco.org
       "tls": tlsVersion,
       "subnets": ["subnet-088c31a9b437252bb","subnet-020410646d1062146","subnet-09f376e1ff1050db2"], //stage-sharedvpc-private-AZ1,AZ2,AZ3
       "securitygroups": ["sg-08dc1998e9fb9dc01"], //stage-hub-LoadBalancerSG
@@ -40,7 +40,7 @@ type awsResourceArns = {
       "eventbus": "arn:aws:events:us-east-1:953078433933:event-bus/stage-dp-core-eventBus"
     },
     "prod": {
-      "cert": "arn:aws:acm:us-east-1:121566555105:certificate/f1d38be1-6945-42f8-80e9-6dd8bc0ae010", //asco.org
+      "cert": "arn:aws:acm:us-east-1:121566555105:certificate/9f608569-00d0-4864-9b04-1671313fb74c", //prod.asco.org
       "tls": tlsVersion,
       "subnets": ["subnet-04272464b2fc3b352","subnet-0cda55c6c3bfc9b4f","subnet-0adcb674030a6f800"], //prod-sharedvpc-private-AZ1,AZ2,AZ3
       "securitygroups": ["sg-03aaa4423c97da278"], //prod-hub-LoadBalancerSG
