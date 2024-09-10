@@ -16227,6 +16227,7 @@ __metadata:
     jest: 29.5.0
     merge: 1.2.1
     prettier: 2.8.8
+    semver: ^7.6.3
     ts-jest: 29.1.0
     typescript: 4.7.4
   languageName: unknown
@@ -29227,7 +29228,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.1.1":
+"semver@npm:^7.1.1, semver@npm:^7.6.3":
   version: 7.6.3
   resolution: "semver@npm:7.6.3"
   bin:

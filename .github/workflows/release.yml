@@ -1,0 +1,201 @@
+# Release workflow for stage and prod deployments
+name: Release
+run-name: ${{ github.ref_name }}
+
+on:
+  push:
+    branches: ['release/v**']
+
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+  candidate:
+    name: candidate
+    runs-on: ubuntu-latest
+    concurrency: stage
+    environment: stage
+    env:
+      AWS_REGION: ${{ vars.AWS_REGION }}
+      OKTA_ISSUER: ${{ vars.OKTA_ISSUER }}
+      PULUMI_SECRETS_PROVIDER: passphrase
+      PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
+      WEBINY_PULUMI_BACKEND: s3://wby-stage-webiny-pulumi-state
+      WEBINY_OIDC_Role: arn:aws:iam::953078433933:role/service/webiny/stage-webiny-config-WebinyOIDCRole-AEjJYOJpG2oJ
+      WCP_PROJECT_ENVIRONMENT_API_KEY: ${{ secrets.WCP_API_KEY }}
+      WEBINY_ADMIN_BRANDFOLDER_KEY: ${{ secrets.WEBINY_ADMIN_BRANDFOLDER_KEY }}
+    outputs:
+      version: ${{ steps.version.outputs.result }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with: 
+          node-version: lts/*
+          cache: 'yarn'
+
+      - name: install semver
+        run: yarn install
+
+      - name: validate branch syntax
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const branch = "${{ github.ref_name }}".match("^release/v[0-9]+\.[0-9]+\.[0-9]+$")
+            if (!branch) { 
+              throw new Error("BranchSyntax: Branch name is not valid. Please ensure it follows the syntax: '^release/v[0-9]+.[0-9]+.[0-9]+$' (example: release/v0.0.0)") 
+            }
+
+      - name: validate and set version
+        uses: actions/github-script@v7
+        id: version
+        with:
+          result-encoding: string
+          script: |
+            const semver = require('semver')
+            const version = "${{ github.ref_name }}".split('/')[1]
+
+            console.log(`Version: ${version}`)
+            if (!semver.valid(version)) { 
+              throw new Error("VersionSyntax: Version not valid. Please ensure it follows semantic versioning") 
+            }
+            
+            // Set tag as v0.0.0-asco.0 if it doesnt exist
+            const release_list = await github.rest.repos.listReleases({
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            });
+            const releases = Array.from(release_list.data).filter(r => r.tag_name.includes(`${version}-asco.`)).map(r => r.tag_name)
+            console.log(`Releases found: ${JSON.stringify(releases)}`)
+            if (releases.length === 0) { return `${version}-asco.0` }
+
+            // Increment tag to the latest asco patch version if it already exists
+            const tag = semver.inc(semver.rsort(releases)[0], "prerelease", "asco")
+            console.log(`Current release candidate: ${tag}`)
+            return `v${tag}`
+
+      - name: Summary
+        run: |
+          echo "Version: ${{ steps.version.outputs.result }}" >> $GITHUB_STEP_SUMMARY
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: us-east-1
+          role-to-assume: ${{ env.WEBINY_OIDC_Role }}
+          role-session-name: AscoWebinyStageDeployment
+
+      - name: Install dependencies
+        run: yarn --immutable
+
+      - name: Check code formatting
+        run: yarn prettier:check
+
+      - name: ESLint
+        run: yarn eslint
+
+      - name: Build custom packages
+        run: yarn webiny workspaces run build --folder packages
+
+      - name: Run unit tests
+        run: yarn test:unit
+
+      - name: Deploy
+        run: yarn webiny deploy --env=stage
+
+      - name: Environment summary
+        run: yarn webiny info --env=stage >> $GITHUB_STEP_SUMMARY
+
+      - name: Run integration tests
+        run: yarn test:integration
+
+      - name: Run end-to-end tests
+        run: yarn test:e2e
+
+  release:
+    name: release
+    needs: [candidate]
+    runs-on: ubuntu-latest
+    environment: prod
+    env:
+      AWS_REGION: ${{ vars.AWS_REGION }}
+      OKTA_ISSUER: ${{ vars.OKTA_ISSUER }}
+      PULUMI_SECRETS_PROVIDER: passphrase
+      PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
+      WEBINY_PULUMI_BACKEND: s3://wby-prod-webiny-pulumi-state
+      WEBINY_OIDC_Role: arn:aws:iam::121566555105:role/service/webiny/prod-webiny-config-WebinyOIDCRole-zDkkoS26lWkL
+      WCP_PROJECT_ENVIRONMENT_API_KEY: ${{ secrets.WCP_API_KEY }}
+      WEBINY_ADMIN_BRANDFOLDER_KEY: ${{ secrets.WEBINY_ADMIN_BRANDFOLDER_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: 'yarn'
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: us-east-1
+          role-to-assume: ${{ env.WEBINY_OIDC_Role }}
+          role-session-name: AscoWebinyProdDeployment
+
+      - name: Install dependencies
+        run: yarn --immutable
+
+      - name: Build custom packages
+        run: yarn webiny workspaces run build --folder packages
+
+      - name: Deploy
+        run: yarn webiny deploy --env=prod
+
+      - name: Environment summary
+        run: yarn webiny info --env=prod >> $GITHUB_STEP_SUMMARY
+
+      - name: Run integration tests
+        run: yarn test:integration
+
+      - name: Run end-to-end tests
+        run: yarn test:e2e
+
+      - name: Create a new tag
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const tag = await github.rest.git.createTag({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag: "${{ needs.candidate.outputs.version }}",
+              message: "${{ needs.candidate.outputs.version }}",
+              object: context.sha,
+              type: "commit",
+              tagger: {
+                name: "ascodevops",
+                email: "devops@asco.org"
+              }
+            })
+
+            const ref = await github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: "refs/tags/${{ needs.candidate.outputs.version }}",
+              sha: tag.data.sha
+            })
+
+      - name: Create a release
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { VERSION } = process.env 
+            const body = "Release ${{ needs.candidate.outputs.version }}"
+            const release = await github.rest.repos.createRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag_name: "${{ needs.candidate.outputs.version }}",
+              body: body,
+              generate_release_notes: true
+            });
+
+            core.summary.addRaw(release.data.body, true).write()

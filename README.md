@@ -51,16 +51,14 @@ if there are changes to any of the libs (like awslibs or a dependency), please e
 Deployment is automated in the following workflows:
 1. Dev: [`Main Branch Pipeline`](https://github.com/ascogit/ASCO.webiny/actions/workflows/main.yml) workflow 
   * deployment is automatic after a PR merge to main
-2. Stage: [`Release Candidate Pipeline`](https://github.com/ascogit/ASCO.webiny/actions/workflows/release_candidate.yml) workflow 
-  * create and push a branch with the naming convention `release/v0.0.0` 
-  * the tag number cannot already exist as a current one
+2. Stage: [`Release`](https://github.com/ascogit/ASCO.webiny/actions/workflows/release.yml) workflow
+  * should generally be the same version number as the current webiny version
+  * create and push a branch with the naming convention `release/v0.0.0`
+  * validates semantic version
+  * the pipeline will automatically add or increment ASCO patch number `v0.0.0-asco.0`
   * the branch should be coming off of the `main` branch trunk
-3. Prod: [`Tag and Release Pipeline`](https://github.com/ascogit/ASCO.webiny/actions/workflows/tag_and_release.yml) workflow 
-  * pipeline must be manually triggered
-  * we try to keep the version number the same as the current webiny version being deployed
-  * tag number cannot already exist
-  * runs off of the corresponding `release/v0.0.0` branch
-  * will fail if run from any other branch
+3. Prod: [`Tag and Release Pipeline`](https://github.com/ascogit/ASCO.webiny/actions/workflows/release.yml) workflow 
+  * automatically run after the stage `Release` pipeline is approved
 
 ## cli examples
 
