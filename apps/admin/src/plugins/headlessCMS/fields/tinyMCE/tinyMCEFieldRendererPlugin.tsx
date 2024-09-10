@@ -24,9 +24,6 @@ export default (): CmsModelFieldRendererPlugin => ({
           {bind => {
 
             const onChangeWithCallback = useCallback((htmlString: string) => {
-              if (!htmlString || htmlString == "") {
-                return;
-              }
               bind.onChange(htmlString)
             }, [bind.onChange])
 
