@@ -18,10 +18,12 @@ export const createContext = () => {
                     return;
                 }
 
-                const eventBusArn = awsconfig[env].eventbus;
-                const flattenedData = flattenEntry(entry);
+                // Resolve special cases with references.
+                resolveReference(context, entry, modelId);
+
                 console.log("Model from context", model);
                 console.log("Entry from context", entry);
+
 
                 // Only proceed if environment is 'dev', 'stage', or 'prod'
                 if (!ascoEnvs.includes(env)) {
@@ -29,8 +31,8 @@ export const createContext = () => {
                     return;
                 }
                 
-                // Resolve special cases with references.
-                resolveReference(context, entry, modelId);
+                const eventBusArn = awsconfig[env].eventbus;
+                const flattenedData = flattenEntry(entry);
 
                 // Construct event
                 const event = {
