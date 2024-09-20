@@ -315,6 +315,7 @@ Resources:
             - states:UntagResource
             - states:ListStateMachines
             - states:UpdateStateMachine
+            - states:ListStateMachineVersions
             Resource: arn:aws:states:*:*:stateMachine:wby-*
 
           # AWS Lambda
