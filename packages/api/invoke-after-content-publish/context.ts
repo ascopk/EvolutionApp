@@ -18,19 +18,19 @@ export const createContext = () => {
                     return;
                 }
 
-                const eventBusArn = awsconfig[env].eventbus;
-                const flattenedData = flattenEntry(entry);
-                console.log("Model from context", model);
-                console.log("Entry from context", entry);
-
                 // Only proceed if environment is 'dev', 'stage', or 'prod'
                 if (!ascoEnvs.includes(env)) {
                     console.log("Environment can only be 'dev', 'stage', or 'prod'; skipping EventBridge call.");
                     return;
                 }
-                
+                const eventBusArn = awsconfig[env].eventbus;
+                const flattenedData = flattenEntry(entry);
+
                 // Resolve special cases with references.
                 entry = await resolveReference(context, entry, modelId);
+
+                console.log("Model from context", model);
+                console.log("Entry from context", entry);
 
                 // Construct event
                 const event = {
