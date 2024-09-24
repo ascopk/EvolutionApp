@@ -58,6 +58,8 @@ export const resolveReference = async (context: CmsContext, entry: CmsEntry<CmsE
             entry.values["aboutAscoFooter"] = null
         }
     }
+    
+    return entry;
 }
 
 // Extracts values from entry and flatens it alongside other fields

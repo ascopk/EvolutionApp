@@ -30,7 +30,7 @@ export const createContext = () => {
                 const flattenedData = flattenEntry(entry);
                 
                 // Resolve special cases with references.
-                resolveReference(context, entry, modelId);
+                entry = await resolveReference(context, entry, modelId);
 
                 // Construct event
                 const event = {
