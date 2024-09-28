@@ -17,7 +17,7 @@ export const resolveReference = async (context: CmsContext, entry: CmsEntry<CmsE
     const Model: ModelName = modelIdLowerCase as ModelName || ModelName.None
 
     if (entry.values["headerLogo"]) {
-        const manager = await context.cms.getEntryManager("logo");
+        const manager = await context.cms.getEntryManager("headerLogo");
         const [item] = await manager.getPublishedByIds([entry.values["headerLogo"]["entryId"]]);
         if (item) {
             entry.values["headerLogo"] = flattenEntry(item)
