@@ -3,7 +3,7 @@ import { CmsContext, CmsEntry, CmsEntryValues } from "@webiny/api-headless-cms/t
 enum ModelName {
     // key: Type, value: modelId
     Person = 'person',
-    Person_Page = "personspage",
+    Person_Page = "personsPage",
     News = "newsRelease",
     None = "none"
 }
