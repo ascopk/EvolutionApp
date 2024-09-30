@@ -18,17 +18,19 @@ export const createContext = () => {
                     return;
                 }
 
-                // Only proceed if environment is 'dev', 'stage', or 'prod'
-                if (!ascoEnvs.includes(env)) {
-                    console.log("Environment can only be 'dev', 'stage', or 'prod'; skipping EventBridge call.");
-                    return;
-                }
                 const eventBusArn = awsconfig[env].eventbus;
                 const flattenedData = flattenEntry(entry);
 
                 console.log("Model from context", model);
                 console.log("Entry from context", entry);
                 // Resolve special cases with references.
+                
+                // Only proceed if environment is 'dev', 'stage', or 'prod'
+                if (!ascoEnvs.includes(env)) {
+                    console.log("Environment can only be 'dev', 'stage', or 'prod'; skipping EventBridge call.");
+                    return;
+                }
+  
                 entry = await resolveReference(context, entry, modelId);
 
                 console.log("Model from context", model);
