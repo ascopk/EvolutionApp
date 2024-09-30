@@ -3,7 +3,7 @@ import { CmsContext, CmsEntry, CmsEntryValues } from "@webiny/api-headless-cms/t
 enum ModelName {
     // key: Type, value: modelId
     Person = 'person',
-    Person_Page = "personsPage",
+    Person_Page = "personspage",
     News = "newsRelease",
     None = "none"
 }
@@ -17,10 +17,13 @@ export const resolveReference = async (context: CmsContext, entry: CmsEntry<CmsE
     const Model: ModelName = modelIdLowerCase as ModelName || ModelName.None
 
     if (entry.values["headerLogo"]) {
-        const manager = await context.cms.getEntryManager("headerLogo");
+        const manager = await context.cms.getEntryManager("logo");
         const [item] = await manager.getPublishedByIds([entry.values["headerLogo"]["entryId"]]);
+        console.log(JSON.stringify(item));
         if (item) {
-            entry.values["headerLogo"] = flattenEntry(item)
+            let flattenItem = flattenEntry(item);
+            console.log(JSON.stringify(item));
+            entry.values["headerLogo"] = flattenItem
         } else {
             entry.values["headerLogo"] = null
         }

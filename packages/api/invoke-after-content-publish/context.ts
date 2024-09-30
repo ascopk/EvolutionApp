@@ -26,6 +26,8 @@ export const createContext = () => {
                 const eventBusArn = awsconfig[env].eventbus;
                 const flattenedData = flattenEntry(entry);
 
+                console.log("Model from context", model);
+                console.log("Entry from context", entry);
                 // Resolve special cases with references.
                 entry = await resolveReference(context, entry, modelId);
 
