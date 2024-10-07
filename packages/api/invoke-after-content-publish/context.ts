@@ -17,7 +17,7 @@ export const createContext = () => {
                     console.log("Ignoring draft mode entries");
                     return;
                 }
-
+                debugger;
                 const eventBusArn = awsconfig[env].eventbus;
                 const flattenedData = flattenEntry(entry);
 
