@@ -26,6 +26,9 @@ export const createContext = () => {
 
                 console.log("Model from context", model);
                 console.log("Entry from context", entry);
+                console.info("Model from context", model);
+                console.info("Entry from context", entry);
+
                 // Resolve special cases with references.
                 
                 // Only proceed if environment is 'dev', 'stage', or 'prod'
@@ -34,10 +37,10 @@ export const createContext = () => {
                     return;
                 }
   
-                entry = await resolveReference(context, entry, modelId);
+                //entry = await resolveReference(context, entry, modelId);
 
-                console.log("Model from context", model);
-                console.log("Entry from context", entry);
+                //console.info("Model from context", model);
+                //console.info("Entry from context", entry);
 
                 // Construct event
                 const event = {
