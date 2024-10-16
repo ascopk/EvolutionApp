@@ -46,14 +46,6 @@ type awsResourceArns = {
       "securitygroups": ["sg-03aaa4423c97da278"], //prod-hub-LoadBalancerSG
       "waf": "arn:aws:wafv2:us-east-1:121566555105:global/webacl/prod-api/6c9072ff-2746-4776-927d-6d6b90e481a5", // prod-api
       "eventbus": "arn:aws:events:us-east-1:121566555105:event-bus/prod-dp-core-eventBus"
-    },
-    "ascopk": {
-      "cert": "arn:aws:acm:us-east-1:477761241525:certificate/62607276-e569-41f6-a493-0715da8c4683", //dev.asco.org
-      "tls": tlsVersion,
-      "subnets": ["subnet-0a418b20378c2543e"], //dev-sharedvpc-private-AZ1
-      "securitygroups": ["sg-0bae4e564dc6b2f97"], //dev-hub-LoadBalancerSG
-      "waf": "arn:aws:wafv2:us-east-1:477761241525:global/webacl/dev-api/3d149f4e-d593-41aa-80a5-39f64cce0bb8", // dev-api
-      "eventbus": "arn:aws:events:us-east-1:477761241525:event-bus/dev-dp-core-eventBus"
     }
   }
   
