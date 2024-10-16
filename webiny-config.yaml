@@ -16,7 +16,6 @@ Parameters:
       - "dev"
       - "stage"
       - "prod"
-      - "ascopk"
 
 Resources:
   WebinyStateBucket:
