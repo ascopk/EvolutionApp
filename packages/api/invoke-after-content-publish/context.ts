@@ -20,9 +20,9 @@ export const createContext = () => {
 
                 console.log('Envionment is', env)
                 let evtBus = awsconfig[env];
-                const eventBusArn = evtBus ? awsconfig[env].eventbus : '';
+                const eventBusArn = evtBus ? evtBus.eventbus : '';
                 console.log('Event Bus Arn', eventBusArn);
-                
+
                 // Only proceed if environment is 'dev', 'stage', or 'prod'
                 if (!ascoEnvs.includes(env)) {
                     console.log("Environment can only be 'dev', 'stage', or 'prod'; skipping EventBridge call.");
