@@ -21,9 +21,7 @@ export const resolveReference = async (context: CmsContext, entry: CmsEntry<CmsE
         const [item] = await manager.getPublishedByIds([entry.values["headerLogo"]["entryId"]]);
         console.log(JSON.stringify(item));
         if (item) {
-            let flattenItem = flattenEntry(item);
-            console.log(JSON.stringify(item));
-            entry.values["headerLogo"] = flattenItem
+            entry.values["headerLogo"] = flattenEntry(item);
         } else {
             entry.values["headerLogo"] = null
         }
