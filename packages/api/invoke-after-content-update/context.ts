@@ -30,12 +30,10 @@ export const createContext = () => {
                 const evtBus = awsconfig[env];
                 
                 const eventBusArn = evtBus ? evtBus.eventbus : '';
-                console.log('Event Bus Arn', eventBusArn);
                 
                 // Resolve special cases with references.
                 entry = await resolveReference(context, entry, modelId);
 
-                console.log('Updating..', entry)
                 const flattenedData = flattenEntry(entry);
 
                 // Construct event
