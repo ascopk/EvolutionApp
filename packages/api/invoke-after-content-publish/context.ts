@@ -19,6 +19,7 @@ export const createContext = () => {
                 }
 
                 console.log('Envionment is', env)
+                
                 const evtBus = awsconfig[env];
                 const eventBusArn = evtBus ? evtBus.eventbus : '';
 
