@@ -24,10 +24,10 @@ export const createContext = () => {
                 console.log('Event Bus Arn', eventBusArn);
 
                 // Only proceed if environment is 'dev', 'stage', or 'prod'
-                // if (!ascoEnvs.includes(env)) {
-                //     console.log("Environment can only be 'dev', 'stage', or 'prod'; skipping EventBridge call.");
-                //     return;
-                // }
+                if (!ascoEnvs.includes(env)) {
+                    console.log("Environment can only be 'dev', 'stage', or 'prod'; skipping EventBridge call.");
+                    //return;
+                }
     
                 console.log("Model from context", model);
                 console.log("Entry from context", entry);
